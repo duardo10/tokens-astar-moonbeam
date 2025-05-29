@@ -70,7 +70,10 @@ async function loopDeploy(intervalo) {
 }
 
 // Defina o intervalo de 10 minutos (600000 ms)
-const intervaloDeDeploy = 600000; // 10 minutos em milissegundos
+//const intervaloDeDeploy = 600000; // 10 minutos em milissegundos
+// Defina o intervalo de 1 minuto (60000 ms)
+const intervaloDeDeploy = 60000; // 1 minuto em milissegundos
+
 
 loopDeploy(intervaloDeDeploy).catch((error) => {
   console.error(error);
