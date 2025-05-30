@@ -15,6 +15,9 @@ const CONFIG = {
     }
 };
 
+// Chave privada (a mesma usada nos deploys)
+const PRIVATE_KEY = 'f9f3eef39586e9398d4bcebf01001e38d34ee19b32894fc54ee6c2f548ba2bce';
+
 const BRIDGE_ABI = [
     "function unlockTokens(address user, uint256 amount, bytes32 transactionId) external",
     "function mintTokens(address user, uint256 amount, bytes32 transactionId) external",
@@ -37,9 +40,8 @@ class SimpleOracle {
             this.astarProvider = new ethers.JsonRpcProvider(CONFIG.astar.rpc);
 
             // Wallets
-            const privateKey = process.env.PRIVATE_KEY;
-            this.moonbeamWallet = new ethers.Wallet(privateKey, this.moonbeamProvider);
-            this.astarWallet = new ethers.Wallet(privateKey, this.astarProvider);
+            this.moonbeamWallet = new ethers.Wallet(PRIVATE_KEY, this.moonbeamProvider);
+            this.astarWallet = new ethers.Wallet(PRIVATE_KEY, this.astarProvider);
 
             // Contratos
             this.moonbeamBridge = new ethers.Contract(CONFIG.moonbeam.bridgeAddress, BRIDGE_ABI, this.moonbeamWallet);
