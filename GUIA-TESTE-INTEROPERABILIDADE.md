@@ -1,100 +1,100 @@
-# 🚀 **GUIA PRÁTICO: Como Demonstrar Interoperabilidade**
+# GUIA PRÁTICO: Como Demonstrar Interoperabilidade
 
 > **Sistema de Bridge Cross-Chain entre Moonbeam ↔ Astar**  
 > Transferência automática de tokens entre duas redes diferentes
 
 ---
 
-## ⚡ **DEMONSTRAÇÃO RÁPIDA (3 minutos):**
+## DEMONSTRAÇÃO RÁPIDA (3 minutos):
 
-### **🔍 Passo 1: Verificar se está tudo funcionando**
+### Passo 1: Verificar se está tudo funcionando
 ```bash
 node check-status.js
 ```
 **Vai mostrar:**
-- 💰 Seus saldos nas duas redes
-- ⛽ Se tem gas suficiente
-- 🏦 Status da bridge
-- ✅ Se está tudo pronto para testar
+- Seus saldos nas duas redes
+- Se tem gas suficiente
+- Status da bridge
+- Se está tudo pronto para testar
 
-### **🧪 Passo 2: Demonstrar interoperabilidade**
+### Passo 2: Demonstrar interoperabilidade
 ```bash
 node test-interop-simple.js
 ```
 **O que acontece:**
-- 🔒 Bloqueia 2 tokens MTK no Moonbeam
-- 🪙 Simula mint de 2 tokens MTA no Astar
-- 📊 Mostra saldos antes e depois
-- ✅ **Prova que a bridge funciona!**
+- Bloqueia 2 tokens MTK no Moonbeam
+- Simula mint de 2 tokens MTA no Astar
+- Mostra saldos antes e depois
+- **Prova que a bridge funciona!**
 
-**PRONTO! Interoperabilidade demonstrada!** 🎉
+**PRONTO! Interoperabilidade demonstrada!**
 
 ---
 
-## 🌐 **VISUALIZAR TOKENS NOS EXPLORADORES:**
+## VISUALIZAR TOKENS NOS EXPLORADORES:
 
-### **🌙 Moonbeam (Moonbase Alpha):**
-**🔗 Explorer:** https://moonbase.moonscan.io/
+### Moonbeam (Moonbase Alpha):
+**Explorer:** https://moonbase.moonscan.io/
 
-**📄 Ver Token MTK:**
+**Ver Token MTK:**
 ```
 https://moonbase.moonscan.io/token/0x66f77aEaAa01f4AB4B34fA229D550Bf7E10Dd2A5
 ```
 
-**🏦 Ver Bridge Contract:**
+**Ver Bridge Contract:**
 ```
 https://moonbase.moonscan.io/address/0xAeBF38ea2Ac91FD912DD88b839b1E7E175063249
 ```
 
-### **🌟 Astar (Shibuya):**
-**🔗 Explorer:** https://shibuya.subscan.io/
+### Astar (Shibuya):
+**Explorer:** https://shibuya.subscan.io/
 
-**📄 Ver Token MTA:**
+**Ver Token MTA:**
 ```
 https://shibuya.subscan.io/account/0xA1fe69910aBd0f78227E672A6b9B27A53B5648cA
 ```
 
-**🏦 Ver Bridge Contract:**
+**Ver Bridge Contract:**
 ```
 https://shibuya.subscan.io/account/0x0c33d1599cbeAa6D42D43eEb5986f7917c7c467e
 ```
 
-### **🔍 Como Verificar Seus Tokens:**
+### Como Verificar Seus Tokens:
 
-#### **No Moonbeam (Moonscan):**
+#### No Moonbeam (Moonscan):
 1. Acesse: https://moonbase.moonscan.io/
 2. Cole seu endereço na busca: `0xE88a9aC732B1A67fbB407b8C73EB7862439cA604`
 3. Clique na aba **"Token Transfers"**
 4. Procure por **MTK** nas transferências
 
-#### **No Astar (Subscan):**
+#### No Astar (Subscan):
 1. Acesse: https://shibuya.subscan.io/
 2. Cole seu endereço na busca: `0xE88a9aC732B1A67fbB407b8C73EB7862439cA604`
 3. Clique na aba **"Transfers"**
 4. Procure por **MTA** nas transferências
 
-### **📱 Visualizar Transações da Bridge:**
+### Visualizar Transações da Bridge:
 - **Lock no Moonbeam**: Aparece como transferência TO bridge contract
 - **Mint no Astar**: Aparece como transferência FROM bridge contract
 - **Hashes das transações**: Mostrados nos testes
 
 ---
 
-## 📋 **ARQUIVOS DISPONÍVEIS:**
+## ARQUIVOS DISPONÍVEIS:
 
 | Arquivo | Para Que Serve | Quando Usar |
 |---------|---------------|-------------|
-| **`check-status.js`** | 🔍 Verificar status | **SEMPRE PRIMEIRO** |
-| **`test-interop-simple.js`** | 🧪 **DEMO PRINCIPAL** | **DEMONSTRAÇÃO** |
-| `demo-interoperabilidade.js` | 🎬 Demo detalhada | Apresentação longa |
-| `bridge-oracle-robust.js` | 🤖 Oracle automático | Monitoramento |
-| `deposit-tokens-astar.js` | 💰 Setup inicial | Se bridge sem tokens |
+| **`check-status.js`** | Verificar status | **SEMPRE PRIMEIRO** |
+| **`test-interop-simple.js`** | **DEMO PRINCIPAL** | **DEMONSTRAÇÃO** |
+| `demo-interoperabilidade.js` | Demo detalhada | Apresentação longa |
+| `bridge-oracle-robust.js` | Oracle automático | Monitoramento |
+| `deposit-tokens-astar.js` | Setup inicial | Se bridge sem tokens |
 
 ---
 
-## 🔧 **SE DER PROBLEMA:**
+## SE DER PROBLEMA:
 
-### **❌ "Bridge precisa de tokens"**
+### "Bridge precisa de tokens"
 Execute primeiro:
 ```bash
 node deposit-tokens-astar.js
@@ -104,86 +104,86 @@ Depois execute novamente:
 node test-interop-simple.js
 ```
 
-### **❌ "Insufficient funds"**
+### "Insufficient funds"
 - Você precisa de tokens DEV (Moonbeam) e SBY (Astar) para gas
 - Busque faucets nas testnets
 
-### **❌ "Network error"**
+### "Network error"
 - Verifique sua internet
 - Tente novamente em alguns segundos
 
 ---
 
-## 🎯 **PARA DEMONSTRAR EM APRESENTAÇÃO:**
+## PARA DEMONSTRAR EM APRESENTAÇÃO:
 
-### **1. Contexto (30 segundos):**
+### 1. Contexto:
 > *"Implementei uma bridge que permite transferir tokens entre Moonbeam e Astar. Vou mostrar funcionando ao vivo."*
 
-### **2. Verificação (30 segundos):**
+### 2. Verificação:
 ```bash
 node check-status.js
 ```
 > *"Primeiro, vamos ver meus saldos nas duas redes. Tenho X tokens em cada rede."*
 
-### **3. Demonstração (2 minutos):**
+### 3. Demonstração:
 ```bash
 node test-interop-simple.js
 ```
 > *"Agora vou transferir 2 tokens do Moonbeam para o Astar. Vejam: os tokens estão sendo bloqueados no Moonbeam... e agora apareceram no Astar! A bridge funcionou!"*
 
-### **4. Prova Visual (30 segundos):**
+### 4. Prova Visual:
 > *"E vocês podem conferir nos exploradores:"*
-- 🌙 **Moonbeam**: https://moonbase.moonscan.io/
-- 🌟 **Astar**: https://shibuya.subscan.io/
+- **Moonbeam**: https://moonbase.moonscan.io/
+- **Astar**: https://shibuya.subscan.io/
 > *"Busquem meu endereço e vejam as transações da bridge!"*
 
-### **5. Resultado:**
+### 5. Resultado:
 > *"Como vocês viram, consegui mover tokens entre duas blockchains diferentes. Isso é interoperabilidade real!"*
 
 ---
 
-## 🏗️ **COMO FUNCIONA TECNICAMENTE:**
+## COMO FUNCIONA TECNICAMENTE:
 
-### **📖 Explicação Simples:**
+### Explicação Simples:
 1. **Bridge Contract**: Smart contract em cada rede
 2. **Lock/Mint**: Bloqueia na origem, cria na destinação  
 3. **Oracle**: Monitora e executa automaticamente
 4. **Segurança**: Prevenção de double-spending
 
-### **🔄 Fluxo Técnico:**
+### Fluxo Técnico:
 ```
 Usuário → Lock MTK (Moonbeam) → Oracle detecta → Mint MTA (Astar) → Sucesso!
 ```
 
-### **📊 Performance:**
-- ⏱️ **Tempo**: ~10 segundos
-- 💰 **Custo**: ~$0.05 USD
-- 🔄 **Confiabilidade**: 100%
-- 🌐 **Redes**: Moonbeam ↔ Astar
+### Performance:
+- **Tempo**: ~10 segundos
+- **Custo**: ~$0.05 USD
+- **Confiabilidade**: 100%
+- **Redes**: Moonbeam ↔ Astar
 
 ---
 
-## 📍 **ENDEREÇOS DOS CONTRATOS DEPLOYADOS:**
+## ENDEREÇOS DOS CONTRATOS DEPLOYADOS:
 
-### **🌙 Moonbeam (Moonbase Alpha):**
+### Moonbeam (Moonbase Alpha):
 - **Bridge**: `0xAeBF38ea2Ac91FD912DD88b839b1E7E175063249`
 - **Token MTK**: `0x66f77aEaAa01f4AB4B34fA229D550Bf7E10Dd2A5`
 
-### **🌟 Astar (Shibuya):**
+### Astar (Shibuya):
 - **Bridge**: `0x0c33d1599cbeAa6D42D43eEb5986f7917c7c467e`
 - **Token MTA**: `0xA1fe69910aBd0f78227E672A6b9B27A53B5648cA`
 
 ---
 
-## 🎪 **VERSÕES EXTRAS (OPCIONAL):**
+## VERSÕES EXTRAS (OPCIONAL):
 
-### **🎬 Demo Mais Detalhada:**
+### Demo Mais Detalhada:
 ```bash
 node demo-interoperabilidade.js
 ```
 Versão com mais explicações e detalhes técnicos.
 
-### **🤖 Oracle Automático:**
+### Oracle Automático:
 ```bash
 node bridge-oracle-robust.js
 ```
@@ -191,47 +191,13 @@ Para mostrar monitoramento em tempo real (deixe rodando no background).
 
 ---
 
-## ✅ **CHECKLIST PARA APRESENTAÇÃO:**
-
-- [ ] Executar `node check-status.js` - Status OK?
-- [ ] Executar `node test-interop-simple.js` - Funcionou?
-- [ ] Mostrar nos exploradores (Moonscan + Subscan)
-- [ ] Explicar tecnicamente como funciona
-- [ ] Mostrar endereços dos contratos
-- [ ] Enfatizar performance e segurança
-- [ ] Demonstrar oracle (opcional)
-
----
-
-## 🎯 **COMANDO PRINCIPAL:**
+## COMANDO PRINCIPAL:
 
 ```bash
 # O comando que mostra TUDO funcionando:
 node test-interop-simple.js
 ```
 
-**Este é o comando principal para demonstrar que a interoperabilidade está funcionando perfeitamente!** 🚀
+**Este é o comando principal para demonstrar que a interoperabilidade está funcionando perfeitamente!**
 
 ---
-
-## 💡 **DICAS PARA EXPLICAR:**
-
-### **🎯 Foque no Resultado:**
-- "Vejam os tokens mudando de rede"
-- "Em 10 segundos, transferi entre blockchains"
-- "Custo baixíssimo, alta velocidade"
-- "Podem conferir nos exploradores!"
-
-### **🔧 Explique a Tecnologia:**
-- "Smart contracts em Solidity"
-- "Oracle automático em Node.js" 
-- "Arquitetura Lock/Mint segura"
-- "Transações visíveis nos exploradores"
-
-### **📊 Mostre os Números:**
-- "100% de taxa de sucesso"
-- "Custos de ~$0.05 por transferência"
-- "Sistema rodando 24/7"
-- "Contratos verificados nos exploradores"
-
-**Pronto para impressionar! 🎉** 
