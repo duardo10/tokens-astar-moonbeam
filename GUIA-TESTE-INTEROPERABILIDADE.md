@@ -5,7 +5,6 @@
 
 ---
 
-## DEMONSTRAÇÃO RÁPIDA (3 minutos):
 
 ### Passo 1: Verificar se está tudo funcionando
 ```bash
