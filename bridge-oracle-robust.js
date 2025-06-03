@@ -35,13 +35,19 @@ class RobustOracle {
     }
 
     async initialize() {
-        console.log('Inicializando oracle robusto...');
-        await this.setupConnections();
-        console.log('Oracle inicializado com sucesso!');
-        console.log('Endereço:', this.moonbeamWallet.address);
-        
-        // Prevenção de reconexão
-        this.setupAutoReconnect();
+        try {
+            console.log('Inicializando oracle robusto...');
+            await this.setupConnections();
+            console.log('Oracle inicializado com sucesso!');
+            console.log('Endereço:', this.moonbeamWallet.address);
+            
+            // Prevenção de reconexão
+            this.setupAutoReconnect();
+            return true;
+        } catch (error) {
+            console.error('Erro na inicialização:', error.message);
+            return false;
+        }
     }
 
     async setupConnections() {
@@ -294,7 +300,7 @@ async function main() {
 
     const initialized = await oracle.initialize();
     if (!initialized) {
-        console.error('❌ Falha na inicialização');
+        console.error('Falha na inicialização');
         return;
     }
 
