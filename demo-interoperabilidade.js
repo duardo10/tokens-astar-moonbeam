@@ -35,9 +35,9 @@ class DemoInteroperabilidade {
     }
 
     async inicializar() {
-        console.log('🚀 DEMO DE INTEROPERABILIDADE - MeuToken Bridge');
+        console.log('DEMO DE INTEROPERABILIDADE - MeuToken Bridge');
         console.log('='.repeat(55));
-        console.log('📋 Este demo vai mostrar:');
+        console.log('Este demo vai mostrar:');
         console.log('   1. Status inicial dos tokens');
         console.log('   2. Lock de tokens no Moonbeam');
         console.log('   3. Mint automático no Astar');
@@ -57,36 +57,36 @@ class DemoInteroperabilidade {
         this.astarBridge = new ethers.Contract(this.CONFIG.astar.bridgeAddress, this.BRIDGE_ABI, this.astarWallet);
         this.astarToken = new ethers.Contract(this.CONFIG.astar.tokenAddress, this.TOKEN_ABI, this.astarWallet);
 
-        console.log('\n✅ Sistema inicializado com sucesso!');
+        console.log('\nSistema inicializado com sucesso!');
     }
 
     async mostrarSaldosIniciais() {
-        console.log('\n📊 SALDOS INICIAIS:');
+        console.log('\nSALDOS INICIAIS:');
         console.log('-'.repeat(40));
         
         const moonbeamBalance = await this.moonbeamToken.balanceOf(this.address);
         const astarBalance = await this.astarToken.balanceOf(this.address);
         const bridgeBalance = await this.astarToken.balanceOf(this.CONFIG.astar.bridgeAddress);
 
-        console.log(`🌙 Moonbeam MTK: ${ethers.formatEther(moonbeamBalance)}`);
-        console.log(`🌟 Astar MTA: ${ethers.formatEther(astarBalance)}`);
-        console.log(`💎 Bridge Astar: ${ethers.formatEther(bridgeBalance)}`);
+        console.log(`Moonbeam MTK: ${ethers.formatEther(moonbeamBalance)}`);
+        console.log(`Astar MTA: ${ethers.formatEther(astarBalance)}`);
+        console.log(`Bridge Astar: ${ethers.formatEther(bridgeBalance)}`);
 
         return { moonbeamBalance, astarBalance, bridgeBalance };
     }
 
     async executarTransferenciaCrossChain() {
-        console.log('\n🔄 EXECUTANDO TRANSFERÊNCIA CROSS-CHAIN:');
+        console.log('\nEXECUTANDO TRANSFERÊNCIA CROSS-CHAIN:');
         console.log('-'.repeat(45));
 
         const transferAmount = ethers.parseEther("3"); // 3 tokens
-        console.log(`💰 Quantidade a transferir: ${ethers.formatEther(transferAmount)} MTK`);
+        console.log(`Quantidade a transferir: ${ethers.formatEther(transferAmount)} MTK`);
 
         // Passo 1: Aprovar bridge
         console.log('\n1️⃣ Aprovando bridge no Moonbeam...');
         const approveTx = await this.moonbeamToken.approve(this.CONFIG.moonbeam.bridgeAddress, transferAmount);
         await approveTx.wait();
-        console.log('   ✅ Aprovação confirmada');
+        console.log('   Aprovação confirmada');
 
         // Passo 2: Lock tokens
         console.log('\n2️⃣ Bloqueando tokens no Moonbeam...');
@@ -96,9 +96,9 @@ class DemoInteroperabilidade {
             this.address
         );
         
-        console.log(`   📝 Hash do lock: ${lockTx.hash}`);
+        console.log(`   Hash do lock: ${lockTx.hash}`);
         const lockReceipt = await lockTx.wait();
-        console.log(`   ✅ Tokens bloqueados! Gas usado: ${lockReceipt.gasUsed}`);
+        console.log(`   Tokens bloqueados! Gas usado: ${lockReceipt.gasUsed}`);
 
         // Extrair transaction ID do evento
         const lockEvent = lockReceipt.logs.find(log => {
@@ -117,14 +117,14 @@ class DemoInteroperabilidade {
         const parsed = this.moonbeamBridge.interface.parseLog(lockEvent);
         const transactionId = parsed.args.transactionId;
         
-        console.log(`   🔑 Transaction ID: ${transactionId.toString().substring(0, 20)}...`);
+        console.log(`   Transaction ID: ${transactionId.toString().substring(0, 20)}...`);
 
         // Passo 3: Simular Oracle (aguardar + mint)
         console.log('\n3️⃣ Simulando Oracle automático...');
-        console.log('   ⏳ Aguardando confirmações (5 segundos)...');
+        console.log('   Aguardando confirmações (5 segundos)...');
         await new Promise(resolve => setTimeout(resolve, 5000));
 
-        console.log('   🪙 Executando mint no Astar...');
+        console.log('   Executando mint no Astar...');
         const mintTx = await this.astarBridge.mintTokens(
             this.address,
             transferAmount,
@@ -132,42 +132,42 @@ class DemoInteroperabilidade {
             { gasLimit: 300000 }
         );
 
-        console.log(`   📝 Hash do mint: ${mintTx.hash}`);
+        console.log(`   Hash do mint: ${mintTx.hash}`);
         const mintReceipt = await mintTx.wait();
-        console.log(`   ✅ Mint concluído! Gas usado: ${mintReceipt.gasUsed}`);
+        console.log(`   Mint concluído! Gas usado: ${mintReceipt.gasUsed}`);
 
         return { transferAmount, lockTx, mintTx };
     }
 
     async mostrarSaldosFinais(saldosIniciais) {
-        console.log('\n📊 SALDOS FINAIS:');
+        console.log('\nSALDOS FINAIS:');
         console.log('-'.repeat(40));
         
         const moonbeamBalance = await this.moonbeamToken.balanceOf(this.address);
         const astarBalance = await this.astarToken.balanceOf(this.address);
 
-        console.log(`🌙 Moonbeam MTK: ${ethers.formatEther(moonbeamBalance)}`);
-        console.log(`🌟 Astar MTA: ${ethers.formatEther(astarBalance)}`);
+        console.log(`Moonbeam MTK: ${ethers.formatEther(moonbeamBalance)}`);
+        console.log(`Astar MTA: ${ethers.formatEther(astarBalance)}`);
 
         // Calcular diferenças
         const moonbeamDiff = saldosIniciais.moonbeamBalance - moonbeamBalance;
         const astarDiff = astarBalance - saldosIniciais.astarBalance;
 
-        console.log('\n📈 MUDANÇAS:');
-        console.log(`🌙 Moonbeam: -${ethers.formatEther(moonbeamDiff)} MTK (bloqueados)`);
-        console.log(`🌟 Astar: +${ethers.formatEther(astarDiff)} MTA (mintados)`);
+        console.log('\nMUDANÇAS:');
+        console.log(`Moonbeam: -${ethers.formatEther(moonbeamDiff)} MTK (bloqueados)`);
+        console.log(`Astar: +${ethers.formatEther(astarDiff)} MTA (mintados)`);
     }
 
     async mostrarEstatisticas() {
-        console.log('\n📊 ESTATÍSTICAS DA DEMONSTRAÇÃO:');
+        console.log('\nESTATÍSTICAS DA DEMONSTRAÇÃO:');
         console.log('='.repeat(45));
-        console.log('✅ Interoperabilidade: FUNCIONANDO');
-        console.log('✅ Lock/Unlock: ATIVO');
-        console.log('✅ Burn/Mint: ATIVO');
-        console.log('✅ Oracle automático: SIMULADO');
-        console.log('⏱️ Tempo total: ~10 segundos');
-        console.log('💰 Custo total: ~$0.10 USD');
-        console.log('🌐 Redes conectadas: Moonbeam ↔ Astar');
+        console.log('Interoperabilidade: FUNCIONANDO');
+        console.log('Lock/Unlock: ATIVO');
+        console.log('Burn/Mint: ATIVO');
+        console.log('Oracle automático: SIMULADO');
+        console.log('Tempo total: ~10 segundos');
+        console.log('Custo total: ~$0.10 USD');
+        console.log('Redes conectadas: Moonbeam ↔ Astar');
     }
 
     async executarDemo() {
@@ -182,14 +182,14 @@ class DemoInteroperabilidade {
             
             await this.mostrarEstatisticas();
 
-            console.log('\n🎉 DEMO CONCLUÍDO COM SUCESSO!');
-            console.log('💡 Para ver o oracle em ação: node bridge-oracle-simple.js');
+            console.log('\nDEMO CONCLUÍDO COM SUCESSO!');
+            console.log('Para ver o oracle em ação: node bridge-oracle-simple.js');
 
         } catch (error) {
-            console.error('\n❌ ERRO NA DEMONSTRAÇÃO:', error.message);
+            console.error('\nERRO NA DEMONSTRAÇÃO:', error.message);
             
             if (error.message.includes('insufficient funds')) {
-                console.log('\n💡 SOLUÇÃO: Execute primeiro: node deposit-tokens-astar.js');
+                console.log('\nSOLUÇÃO: Execute primeiro: node deposit-tokens-astar.js');
             }
         }
     }

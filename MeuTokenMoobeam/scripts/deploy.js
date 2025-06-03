@@ -90,16 +90,16 @@ async function deployToken() {
 
   // Exibe no terminal
   console.log("Token deployed at:", endereco);
-  console.log("Gas used:", gasUsed); // ⛽ gás consumido
+  console.log("Gas used:", gasUsed); // gás consumido
   console.log("Transaction hash:", txHash);
   console.log(`📁 Log salvo em: deploy-log.csv`);
 }
 
 async function loopDeploy(intervalo) {
   while (true) {
-    console.log("🚀 Iniciando deploy...");
+    console.log("Iniciando deploy...");
     await deployToken();
-    console.log(`🔄 Aguardando ${intervalo / 60000} minutos para o próximo deploy...\n`);
+    console.log(`Aguardando ${intervalo / 60000} minutos para o próximo deploy...\n`);
 
     // Aguarda o intervalo (10 minutos = 600000 milissegundos)
     await new Promise(resolve => setTimeout(resolve, intervalo));

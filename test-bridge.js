@@ -33,25 +33,24 @@ const TOKEN_ABI = [
 ];
 
 async function testBridge() {
-    console.log('🧪 Iniciando teste da bridge...\n');
-
-    // Configurar providers
-    const moonbeamProvider = new ethers.JsonRpcProvider(CONFIG.moonbeam.rpc);
-    const astarProvider = new ethers.JsonRpcProvider(CONFIG.astar.rpc);
-
-    // Configurar wallet (mesmo para ambas as redes)
-    const privateKey = process.env.PRIVATE_KEY;
-    if (!privateKey) {
+    const PRIVATE_KEY = process.env.PRIVATE_KEY;
+    
+    if (!PRIVATE_KEY) {
         console.error('❌ Configure PRIVATE_KEY no arquivo .env');
         return;
     }
 
-    const moonbeamWallet = new ethers.Wallet(privateKey, moonbeamProvider);
-    const astarWallet = new ethers.Wallet(privateKey, astarProvider);
-
-    console.log('🔑 Usando endereço:', moonbeamWallet.address);
-
     try {
+        console.log('Iniciando teste da bridge...\n');
+
+        // Configurar providers
+        const moonbeamProvider = new ethers.JsonRpcProvider(CONFIG.moonbeam.rpc);
+        const astarProvider = new ethers.JsonRpcProvider(CONFIG.astar.rpc);
+
+        // Configurar wallets
+        const moonbeamWallet = new ethers.Wallet(PRIVATE_KEY, moonbeamProvider);
+        const astarWallet = new ethers.Wallet(PRIVATE_KEY, astarProvider);
+
         // Configurar contratos
         const moonbeamBridge = new ethers.Contract(CONFIG.moonbeam.bridgeAddress, BRIDGE_ABI, moonbeamWallet);
         const moonbeamToken = new ethers.Contract(CONFIG.moonbeam.tokenAddress, TOKEN_ABI, moonbeamWallet);
@@ -59,38 +58,44 @@ async function testBridge() {
         const astarBridge = new ethers.Contract(CONFIG.astar.bridgeAddress, BRIDGE_ABI, astarWallet);
         const astarToken = new ethers.Contract(CONFIG.astar.tokenAddress, TOKEN_ABI, astarWallet);
 
+        console.log('Usando endereço:', moonbeamWallet.address);
+        console.log('Moonbeam RPC:', CONFIG.moonbeam.rpc);
+        console.log('Astar RPC:', CONFIG.astar.rpc);
+        console.log('Bridge Moonbeam:', CONFIG.moonbeam.bridgeAddress);
+        console.log('Bridge Astar:', CONFIG.astar.bridgeAddress);
+
         // Verificar saldos iniciais
-        console.log('💰 Verificando saldos iniciais...');
+        console.log('Verificando saldos iniciais...');
         const moonbeamBalance = await moonbeamToken.balanceOf(moonbeamWallet.address);
         const astarBalance = await astarToken.balanceOf(astarWallet.address);
         
-        console.log(`   Moonbeam: ${ethers.formatEther(moonbeamBalance)} MTK`);
-        console.log(`   Astar: ${ethers.formatEther(astarBalance)} MTA\n`);
+        console.log(`Moonbeam MTK: ${ethers.formatEther(moonbeamBalance)}`);
+        console.log(`Astar MTA: ${ethers.formatEther(astarBalance)}`);
 
-        // TESTE 1: Lock tokens no Moonbeam
-        console.log('🔒 TESTE 1: Bloqueando tokens no Moonbeam...');
-        const transferAmount = ethers.parseEther("10"); // 10 tokens
+        // TESTE 1: LOCK
+        console.log('TESTE 1: Bloqueando tokens no Moonbeam...');
+        const transferAmount = ethers.parseEther("2"); // 2 tokens
 
-        // Aprovar o bridge para gastar tokens
+        // Aprovar primeiro
         console.log('   Aprovando bridge para gastar tokens...');
         const approveTx = await moonbeamToken.approve(CONFIG.moonbeam.bridgeAddress, transferAmount);
         await approveTx.wait();
-        console.log('   ✅ Aprovação concluída');
+        console.log('   Aprovação concluída');
 
         // Lock tokens
         console.log('   Bloqueando tokens...');
         const lockTx = await moonbeamBridge.lockTokens(
             transferAmount,
             "shibuya",
-            moonbeamWallet.address // mesmo endereço na outra rede
+            moonbeamWallet.address
         );
         
-        console.log(`   📝 Hash da transação: ${lockTx.hash}`);
-        const lockReceipt = await lockTx.wait();
-        console.log('   ✅ Tokens bloqueados com sucesso!\n');
+        console.log(`   Hash da transação: ${lockTx.hash}`);
+        const receipt = await lockTx.wait();
+        console.log('   Tokens bloqueados com sucesso!\n');
 
-        // Extrair evento TokensLocked
-        const lockEvent = lockReceipt.logs.find(log => {
+        // Encontrar evento TokensLocked
+        const lockEvent = receipt.logs.find(log => {
             try {
                 const parsed = moonbeamBridge.interface.parseLog(log);
                 return parsed.name === 'TokensLocked';
@@ -102,34 +107,32 @@ async function testBridge() {
         if (lockEvent) {
             const parsed = moonbeamBridge.interface.parseLog(lockEvent);
             const transactionId = parsed.args.transactionId;
-            console.log(`🔑 Transaction ID: ${transactionId}`);
-            
-            // TESTE 2: Simular mint no Astar (você faria isso manualmente ou com o oracle)
-            console.log('\n🪙 TESTE 2: Simulando mint no Astar...');
-            console.log('   (Normalmente o oracle faria isso automaticamente)');
-            
-            // Para testar manualmente, você pode chamar mintTokens se for o owner:
-            console.log('   💡 Para completar a transferência, execute:');
-            console.log(`   await astarBridge.mintTokens("${moonbeamWallet.address}", "${transferAmount}", "${transactionId}")`);
+            console.log(`Transaction ID: ${transactionId}`);
         }
 
-        // Verificar saldos após lock
-        console.log('\n💰 Verificando saldos após lock...');
-        const moonbeamBalanceAfter = await moonbeamToken.balanceOf(moonbeamWallet.address);
-        console.log(`   Moonbeam: ${ethers.formatEther(moonbeamBalanceAfter)} MTK (reduzido em 10)`);
+        // TESTE 2: Instruções para mint
+        console.log('\nTESTE 2: Simulando mint no Astar...');
+        console.log('   Este é um teste apenas do lock. O mint seria automático com o oracle.');
+        console.log('   Para completar a transferência, execute:');
+        console.log('   node bridge-oracle-simple.js');
 
-        console.log('\n✅ Teste de lock concluído com sucesso!');
-        console.log('\n📝 Para testar o fluxo completo:');
-        console.log('   1. Execute o oracle com: node bridge-oracle.js');
-        console.log('   2. O oracle detectará o evento e executará o mint automaticamente');
+        // Verificar saldos após lock
+        console.log('\nVerificando saldos após lock...');
+        const moonbeamBalanceFinal = await moonbeamToken.balanceOf(moonbeamWallet.address);
+        console.log(`Moonbeam MTK após lock: ${ethers.formatEther(moonbeamBalanceFinal)}`);
+
+        console.log('\nTeste de lock concluído com sucesso!');
+        console.log('\nPara testar o fluxo completo:');
+        console.log('1. Execute: node bridge-oracle-simple.js (em outro terminal)');
+        console.log('2. Execute: node test-bridge-final.js');
 
     } catch (error) {
-        console.error('❌ Erro durante o teste:', error.message);
+        console.error('\nERRO:', error.message);
         
         if (error.message.includes('insufficient funds')) {
-            console.log('\n💡 Dica: Certifique-se de ter tokens suficientes em sua carteira');
-        } else if (error.message.includes('invalid address')) {
-            console.log('\n💡 Dica: Verifique se configurou os endereços corretos no CONFIG');
+            console.log('\nDica: Certifique-se de ter tokens suficientes em sua carteira');
+        } else if (error.message.includes('network')) {
+            console.log('\nDica: Verifique se configurou os endereços corretos no CONFIG');
         }
     }
 }

@@ -1,7 +1,7 @@
 const { ethers } = require('ethers');
 
 async function depositTokens() {
-    console.log('💰 Depositando tokens no bridge do Astar...\n');
+    console.log('Depositando tokens no bridge do Astar...\n');
 
     const PRIVATE_KEY = 'f9f3eef39586e9398d4bcebf01001e38d34ee19b32894fc54ee6c2f548ba2bce';
     const astarRpc = 'https://evm.shibuya.astar.network';
@@ -26,37 +26,37 @@ async function depositTokens() {
 
         const depositAmount = ethers.parseEther("50000"); // 50k tokens
         
-        console.log('🔑 Wallet:', wallet.address);
-        console.log('💎 Depositando:', ethers.formatEther(depositAmount), 'MTA');
+        console.log('Wallet:', wallet.address);
+        console.log('Depositando:', ethers.formatEther(depositAmount), 'MTA');
         
         // Verificar saldo
         const balance = await token.balanceOf(wallet.address);
-        console.log('💰 Saldo atual:', ethers.formatEther(balance), 'MTA');
+        console.log('Saldo atual:', ethers.formatEther(balance), 'MTA');
         
         if (balance < depositAmount) {
-            console.log('❌ Saldo insuficiente para depósito');
+            console.log('Saldo insuficiente para depósito');
             return;
         }
 
         // Aprovar
-        console.log('\n📝 Aprovando bridge...');
+        console.log('\nAprovando bridge...');
         const approveTx = await token.approve(bridgeAddress, depositAmount);
         await approveTx.wait();
-        console.log('✅ Aprovação confirmada');
+        console.log('Aprovação confirmada');
 
         // Depositar
-        console.log('💰 Depositando tokens...');
+        console.log('Depositando tokens...');
         const depositTx = await bridge.depositTokens(depositAmount);
         await depositTx.wait();
         
-        console.log('✅ Depósito realizado!');
-        console.log('📝 Hash:', depositTx.hash);
+        console.log('Depósito realizado!');
+        console.log('Hash:', depositTx.hash);
         
-        console.log('\n🎉 Bridge do Astar agora tem tokens para mint!');
-        console.log('🔄 Execute novamente: node test-bridge-final.js');
+        console.log('\nBridge do Astar agora tem tokens para mint!');
+        console.log('Execute novamente: node test-bridge-final.js');
 
     } catch (error) {
-        console.error('❌ Erro:', error.message);
+        console.error('Erro:', error.message);
     }
 }
 

@@ -1,7 +1,7 @@
 const { ethers } = require('ethers');
 
 async function testSimple() {
-    console.log('🧪 TESTE SIMPLES DE INTEROPERABILIDADE (SEM EVENT LISTENERS)');
+    console.log('TESTE SIMPLES DE INTEROPERABILIDADE (SEM EVENT LISTENERS)');
     console.log('='.repeat(60));
 
     const PRIVATE_KEY = 'f9f3eef39586e9398d4bcebf01001e38d34ee19b32894fc54ee6c2f548ba2bce';
@@ -44,56 +44,56 @@ async function testSimple() {
         const astarBridge = new ethers.Contract(CONFIG.astar.bridgeAddress, BRIDGE_ABI, astarWallet);
         const astarToken = new ethers.Contract(CONFIG.astar.tokenAddress, TOKEN_ABI, astarWallet);
 
-        console.log('🔑 Endereço:', moonbeamWallet.address);
+        console.log('Endereço:', moonbeamWallet.address);
 
         // 1. VERIFICAR SALDOS INICIAIS
-        console.log('\n💰 SALDOS INICIAIS:');
+        console.log('\nSALDOS INICIAIS:');
         const moonbeamBalanceInitial = await moonbeamToken.balanceOf(moonbeamWallet.address);
         const astarBalanceInitial = await astarToken.balanceOf(astarWallet.address);
         
-        console.log(`   🌙 Moonbeam MTK: ${ethers.formatEther(moonbeamBalanceInitial)}`);
-        console.log(`   🌟 Astar MTA: ${ethers.formatEther(astarBalanceInitial)}`);
+        console.log(`   Moonbeam MTK: ${ethers.formatEther(moonbeamBalanceInitial)}`);
+        console.log(`   Astar MTA: ${ethers.formatEther(astarBalanceInitial)}`);
 
         // 2. TESTE DE LOCK (SEM WAIT DE EVENTOS)
-        console.log('\n🔒 EXECUTANDO LOCK NO MOONBEAM:');
+        console.log('\nEXECUTANDO LOCK NO MOONBEAM:');
         const transferAmount = ethers.parseEther("2"); // 2 tokens
 
         // Aprovar
-        console.log('   📝 Aprovando bridge...');
+        console.log('   Aprovando bridge...');
         const approveTx = await moonbeamToken.approve(CONFIG.moonbeam.bridgeAddress, transferAmount);
         await approveTx.wait();
-        console.log('   ✅ Aprovação confirmada');
+        console.log('   Aprovação confirmada');
 
         // Lock tokens
-        console.log('   🔒 Bloqueando tokens...');
+        console.log('   Bloqueando tokens...');
         const lockTx = await moonbeamBridge.lockTokens(
             transferAmount,
             "shibuya",
             moonbeamWallet.address
         );
         
-        console.log(`   📝 Hash do lock: ${lockTx.hash}`);
+        console.log(`   Hash do lock: ${lockTx.hash}`);
         const lockReceipt = await lockTx.wait();
-        console.log(`   ✅ Lock executado! Gas usado: ${lockReceipt.gasUsed}`);
+        console.log(`   Lock executado! Gas usado: ${lockReceipt.gasUsed}`);
 
         // 3. VERIFICAR SALDOS APÓS LOCK
-        console.log('\n💰 SALDOS APÓS LOCK:');
+        console.log('\nSALDOS APÓS LOCK:');
         const moonbeamBalanceAfterLock = await moonbeamToken.balanceOf(moonbeamWallet.address);
         const lockDiff = moonbeamBalanceInitial - moonbeamBalanceAfterLock;
         
-        console.log(`   🌙 Moonbeam MTK: ${ethers.formatEther(moonbeamBalanceAfterLock)}`);
-        console.log(`   📉 Diferença: -${ethers.formatEther(lockDiff)} MTK (bloqueados)`);
+        console.log(`   Moonbeam MTK: ${ethers.formatEther(moonbeamBalanceAfterLock)}`);
+        console.log(`   Diferença: -${ethers.formatEther(lockDiff)} MTK (bloqueados)`);
 
         // 4. SIMULAÇÃO DE MINT (sem oracle automático)
-        console.log('\n🪙 SIMULAÇÃO DE MINT NO ASTAR:');
-        console.log('   ⏳ Aguardando 5 segundos (simulação oracle)...');
+        console.log('\nSIMULAÇÃO DE MINT NO ASTAR:');
+        console.log('   Aguardando 5 segundos (simulação oracle)...');
         await new Promise(resolve => setTimeout(resolve, 5000));
 
         // Gerar transaction ID simples para teste
         const simpleTransactionId = ethers.keccak256(ethers.toUtf8Bytes(`${lockTx.hash}_${Date.now()}`));
         
         try {
-            console.log('   🪙 Executando mint...');
+            console.log('   Executando mint...');
             const mintTx = await astarBridge.mintTokens(
                 moonbeamWallet.address,
                 transferAmount,
@@ -101,44 +101,44 @@ async function testSimple() {
                 { gasLimit: 300000 }
             );
 
-            console.log(`   📝 Hash do mint: ${mintTx.hash}`);
+            console.log(`   Hash do mint: ${mintTx.hash}`);
             const mintReceipt = await mintTx.wait();
-            console.log(`   ✅ Mint executado! Gas usado: ${mintReceipt.gasUsed}`);
+            console.log(`   Mint executado! Gas usado: ${mintReceipt.gasUsed}`);
 
             // 5. VERIFICAR SALDOS FINAIS
-            console.log('\n💰 SALDOS FINAIS:');
+            console.log('\nSALDOS FINAIS:');
             const astarBalanceFinal = await astarToken.balanceOf(astarWallet.address);
             const mintDiff = astarBalanceFinal - astarBalanceInitial;
             
-            console.log(`   🌟 Astar MTA: ${ethers.formatEther(astarBalanceFinal)}`);
-            console.log(`   📈 Diferença: +${ethers.formatEther(mintDiff)} MTA (mintados)`);
+            console.log(`   Astar MTA: ${ethers.formatEther(astarBalanceFinal)}`);
+            console.log(`   Diferença: +${ethers.formatEther(mintDiff)} MTA (mintados)`);
 
             // RESULTADO FINAL
-            console.log('\n🎉 RESULTADO:');
-            console.log('   ✅ Lock no Moonbeam: FUNCIONOU');
-            console.log('   ✅ Mint no Astar: FUNCIONOU');
-            console.log('   ✅ Interoperabilidade: CONFIRMADA');
+            console.log('\nRESULTADO:');
+            console.log('   Lock no Moonbeam: FUNCIONOU');
+            console.log('   Mint no Astar: FUNCIONOU');
+            console.log('   Interoperabilidade: CONFIRMADA');
 
         } catch (mintError) {
-            console.log('   ⚠️ Mint falhou (normal se não tiver tokens no bridge)');
-            console.log('   💡 Execute: node deposit-tokens-astar.js');
-            console.log('   ✅ Mas o LOCK funcionou perfeitamente!');
+            console.log('   Mint falhou (normal se não tiver tokens no bridge)');
+            console.log('   Execute: node deposit-tokens-astar.js');
+            console.log('   Mas o LOCK funcionou perfeitamente!');
         }
 
-        console.log('\n📊 ESTATÍSTICAS:');
-        console.log(`   🔒 Tokens bloqueados: ${ethers.formatEther(transferAmount)} MTK`);
-        console.log(`   ⛽ Gas do lock: ${lockReceipt.gasUsed}`);
-        console.log(`   ⏱️ Tempo total: ~10 segundos`);
-        console.log(`   💰 Custo estimado: ~$0.05 USD`);
+        console.log('\nESTATÍSTICAS:');
+        console.log(`   Tokens bloqueados: ${ethers.formatEther(transferAmount)} MTK`);
+        console.log(`   Gas do lock: ${lockReceipt.gasUsed}`);
+        console.log(`   Tempo total: ~10 segundos`);
+        console.log(`   Custo estimado: ~$0.05 USD`);
 
     } catch (error) {
-        console.error('\n❌ ERRO:', error.message);
+        console.error('\nERRO:', error.message);
         
         if (error.message.includes('insufficient funds')) {
-            console.log('\n💡 SOLUÇÃO: Adicione mais tokens DEV/SBY para gas');
+            console.log('\nSOLUÇÃO: Adicione mais tokens DEV/SBY para gas');
         }
     }
 }
 
-console.log('🚀 Iniciando teste simples...\n');
+console.log('Iniciando teste simples...\n');
 testSimple().catch(console.error); 

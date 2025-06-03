@@ -52,21 +52,30 @@ async function deployToken() {
   fs.appendFileSync(filePath, linha, "utf8");
 
   // Exibe no terminal
-  console.log(`✅ Contrato implantado em: ${endereco}`);
-  console.log(`⛽ Gas utilizado: ${gasUsed}`);
-  console.log(`🔗 Hash da transação: ${txHash}`);
-  console.log(`📁 Log salvo em: deploy-log.csv`);
+  console.log(`Contrato implantado em: ${endereco}`);
+  console.log(`Gas utilizado: ${gasUsed}`);
+  console.log(`Hash da transação: ${txHash}`);
+  console.log(`Log salvo em: deploy-log.csv`);
+
+  return endereco;
 }
 
-async function loopDeploy(intervalo) {
-  while (true) {
-    console.log("🚀 Iniciando deploy...");
-    await deployToken();
-    console.log(`🔄 Aguardando ${intervalo / 60000} minutos para o próximo deploy...\n`);
-
-    // Aguarda o intervalo (10 minutos = 600000 milissegundos)
-    await new Promise(resolve => setTimeout(resolve, intervalo));
+async function deployContract() {
+  try {
+    return await deployToken();
+  } catch (error) {
+    console.error("Erro no deploy:", error.message);
+    throw error;
   }
+}
+
+async function main() {
+  console.log("Iniciando deploy...");
+  await deployContract();
+  
+  // Aguarda 1 minuto antes do próximo deploy
+  setTimeout(main, intervalo);
+  console.log(`Aguardando ${intervalo / 60000} minutos para o próximo deploy...\n`);
 }
 
 // Defina o intervalo de 10 minutos (600000 ms)
@@ -74,8 +83,7 @@ async function loopDeploy(intervalo) {
 // Defina o intervalo de 1 minuto (60000 ms)
 const intervaloDeDeploy = 60000; // 1 minuto em milissegundos
 
-
-loopDeploy(intervaloDeDeploy).catch((error) => {
+main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });

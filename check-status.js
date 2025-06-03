@@ -1,7 +1,7 @@
 const { ethers } = require('ethers');
 
 async function checkStatus() {
-    console.log('🔍 VERIFICANDO STATUS DO SISTEMA DE INTEROPERABILIDADE');
+    console.log('VERIFICANDO STATUS DO SISTEMA DE INTEROPERABILIDADE');
     console.log('='.repeat(60));
 
     const PRIVATE_KEY = 'f9f3eef39586e9398d4bcebf01001e38d34ee19b32894fc54ee6c2f548ba2bce';
@@ -30,19 +30,19 @@ async function checkStatus() {
         const moonbeamWallet = new ethers.Wallet(PRIVATE_KEY, moonbeamProvider);
         const astarWallet = new ethers.Wallet(PRIVATE_KEY, astarProvider);
 
-        console.log('🔑 Endereço da Carteira:', address);
+        console.log('Endereço da Carteira:', address);
         console.log();
 
         // 1. VERIFICAR SALDOS NATIVOS (GAS)
-        console.log('⛽ SALDOS DE GAS:');
+        console.log('SALDOS DE GAS:');
         const moonbeamGas = await moonbeamProvider.getBalance(address);
         const astarGas = await astarProvider.getBalance(address);
         
-        console.log(`   🌙 Moonbeam DEV: ${ethers.formatEther(moonbeamGas)}`);
-        console.log(`   🌟 Astar SBY: ${ethers.formatEther(astarGas)}`);
+        console.log(`   Moonbeam DEV: ${ethers.formatEther(moonbeamGas)}`);
+        console.log(`   Astar SBY: ${ethers.formatEther(astarGas)}`);
 
         // 2. VERIFICAR SALDOS DOS TOKENS
-        console.log('\n💰 SALDOS DOS TOKENS:');
+        console.log('\nSALDOS DOS TOKENS:');
         const tokenABI = ["function balanceOf(address) view returns (uint256)"];
         
         const moonbeamToken = new ethers.Contract(CONFIG.moonbeam.tokenAddress, tokenABI, moonbeamProvider);
@@ -51,39 +51,39 @@ async function checkStatus() {
         const moonbeamBalance = await moonbeamToken.balanceOf(address);
         const astarBalance = await astarToken.balanceOf(address);
         
-        console.log(`   🌙 Moonbeam MTK: ${ethers.formatEther(moonbeamBalance)}`);
-        console.log(`   🌟 Astar MTA: ${ethers.formatEther(astarBalance)}`);
+        console.log(`   Moonbeam MTK: ${ethers.formatEther(moonbeamBalance)}`);
+        console.log(`   Astar MTA: ${ethers.formatEther(astarBalance)}`);
 
         // 3. VERIFICAR SALDO DO BRIDGE (ASTAR)
-        console.log('\n🏦 SALDO DO BRIDGE (para mints):');
+        console.log('\nSALDO DO BRIDGE (para mints):');
         const astarBridgeBalance = await astarToken.balanceOf(CONFIG.astar.bridgeAddress);
-        console.log(`   💎 Bridge Astar: ${ethers.formatEther(astarBridgeBalance)} MTA`);
+        console.log(`   Bridge Astar: ${ethers.formatEther(astarBridgeBalance)} MTA`);
 
         // 4. STATUS DOS CONTRATOS
-        console.log('\n📍 ENDEREÇOS DOS CONTRATOS:');
-        console.log(`   🌙 Moonbeam Bridge: ${CONFIG.moonbeam.bridgeAddress}`);
-        console.log(`   🌙 Moonbeam Token: ${CONFIG.moonbeam.tokenAddress}`);
-        console.log(`   🌟 Astar Bridge: ${CONFIG.astar.bridgeAddress}`);
-        console.log(`   🌟 Astar Token: ${CONFIG.astar.tokenAddress}`);
+        console.log('\nENDEREÇOS DOS CONTRATOS:');
+        console.log(`   Moonbeam Bridge: ${CONFIG.moonbeam.bridgeAddress}`);
+        console.log(`   Moonbeam Token: ${CONFIG.moonbeam.tokenAddress}`);
+        console.log(`   Astar Bridge: ${CONFIG.astar.bridgeAddress}`);
+        console.log(`   Astar Token: ${CONFIG.astar.tokenAddress}`);
 
         // 5. VERIFICAÇÕES
-        console.log('\n✅ VERIFICAÇÕES:');
-        console.log(`   Gas Moonbeam: ${moonbeamGas > ethers.parseEther('0.01') ? '✅ OK' : '❌ Insuficiente'}`);
-        console.log(`   Gas Astar: ${astarGas > ethers.parseEther('0.01') ? '✅ OK' : '❌ Insuficiente'}`);
-        console.log(`   Tokens MTK: ${moonbeamBalance > ethers.parseEther('10') ? '✅ OK' : '❌ Insuficiente'}`);
-        console.log(`   Tokens MTA: ${astarBalance > ethers.parseEther('10') ? '✅ OK' : '❌ Insuficiente'}`);
-        console.log(`   Bridge Astar: ${astarBridgeBalance > ethers.parseEther('100') ? '✅ OK' : '⚠️ Precisa depósito'}`);
+        console.log('\nVERIFICAÇÕES:');
+        console.log(`   Gas Moonbeam: ${moonbeamGas > ethers.parseEther('0.01') ? 'OK' : 'Insuficiente'}`);
+        console.log(`   Gas Astar: ${astarGas > ethers.parseEther('0.01') ? 'OK' : 'Insuficiente'}`);
+        console.log(`   Tokens MTK: ${moonbeamBalance > ethers.parseEther('10') ? 'OK' : 'Insuficiente'}`);
+        console.log(`   Tokens MTA: ${astarBalance > ethers.parseEther('10') ? 'OK' : 'Insuficiente'}`);
+        console.log(`   Bridge Astar: ${astarBridgeBalance > ethers.parseEther('100') ? 'OK' : 'Precisa depósito'}`);
 
-        console.log('\n🎯 PRÓXIMOS PASSOS:');
+        console.log('\nPRÓXIMOS PASSOS:');
         if (astarBridgeBalance < ethers.parseEther('100')) {
             console.log('   1. Execute: node deposit-tokens-astar.js');
             console.log('   2. Execute: node test-bridge-final.js');
         } else {
-            console.log('   ✅ Tudo pronto! Execute: node test-bridge-final.js');
+            console.log('   Tudo pronto! Execute: node test-bridge-final.js');
         }
 
     } catch (error) {
-        console.error('❌ Erro:', error.message);
+        console.error('Erro:', error.message);
     }
 }
 

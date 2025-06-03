@@ -35,17 +35,13 @@ class RobustOracle {
     }
 
     async initialize() {
-        try {
-            console.log('🔗 Inicializando oracle robusto...');
-
-            await this.setupConnections();
-            console.log('✅ Oracle inicializado com sucesso!');
-            console.log('👤 Endereço:', this.moonbeamWallet.address);
-            return true;
-        } catch (error) {
-            console.error('❌ Erro na inicialização:', error.message);
-            return false;
-        }
+        console.log('Inicializando oracle robusto...');
+        await this.setupConnections();
+        console.log('Oracle inicializado com sucesso!');
+        console.log('Endereço:', this.moonbeamWallet.address);
+        
+        // Prevenção de reconexão
+        this.setupAutoReconnect();
     }
 
     async setupConnections() {
@@ -77,7 +73,7 @@ class RobustOracle {
         if (this.isRunning) return;
         
         this.isRunning = true;
-        console.log('👁️ Iniciando monitoramento robusto...\n');
+        console.log('Iniciando monitoramento robusto...\n');
 
         // Usar polling ao invés de WebSocket para evitar problemas de filtro
         this.startPolling();
@@ -85,7 +81,7 @@ class RobustOracle {
         // Configurar reconexão automática
         this.setupAutoReconnect();
 
-        console.log('🚀 Oracle ativo! Usando polling para eventos...');
+        console.log('Oracle ativo! Usando polling para eventos...');
     }
 
     startPolling() {
@@ -95,7 +91,7 @@ class RobustOracle {
                 await this.pollMoonbeamEvents();
             } catch (error) {
                 console.error('⚠️ Erro no polling Moonbeam:', error.message);
-                this.handleError(error);
+                this.handleError('Moonbeam', error);
             }
         }, 10000); // 10 segundos
 
@@ -105,7 +101,7 @@ class RobustOracle {
                 await this.pollAstarEvents();
             } catch (error) {
                 console.error('⚠️ Erro no polling Astar:', error.message);
-                this.handleError(error);
+                this.handleError('Astar', error);
             }
         }, 10000); // 10 segundos
     }
@@ -162,35 +158,33 @@ class RobustOracle {
                 return;
             }
 
-            console.log(`🔒 EVENTO DETECTADO - Tokens Bloqueados:`);
-            console.log(`   👤 Usuário: ${user}`);
-            console.log(`   💰 Quantidade: ${ethers.formatEther(amount)} tokens`);
-            console.log(`   🎯 Destino: ${destinationChain}`);
-            console.log(`   📍 Endereço: ${destinationAddress}`);
-            console.log(`   🔑 TX ID: ${txId.substring(0, 10)}...`);
+            console.log(`EVENTO DETECTADO - Tokens Bloqueados:`);
+            console.log(`   Usuário: ${user}`);
+            console.log(`   Quantidade: ${ethers.formatEther(amount)} tokens`);
+            console.log(`   Destino: ${destinationChain}`);
+            console.log(`   Endereço: ${destinationAddress}`);
+            console.log(`   TX ID: ${txId.substring(0, 10)}...`);
 
-            // Aguarda confirmações
-            console.log('⏳ Aguardando confirmações...');
-            await new Promise(resolve => setTimeout(resolve, 3000));
+            // Aguardar confirmações
+            console.log('Aguardando confirmações...');
+            await new Promise(resolve => setTimeout(resolve, 5000));
 
-            // Executa mint no Astar
-            if (destinationChain.toLowerCase().includes('astar') || destinationChain.toLowerCase().includes('shibuya')) {
-                console.log('🪙 Executando mint no Astar...');
-                
-                const mintTx = await this.astarBridge.mintTokens(destinationAddress, amount, transactionId, {
-                    gasLimit: 300000
-                });
+            // Executar mint
+            console.log('Executando mint no Astar...');
+            const mintTx = await this.astarBridge.mintTokens(destinationAddress, amount, transactionId, {
+                gasLimit: 300000
+            });
 
-                console.log(`   📝 Hash: ${mintTx.hash}`);
-                const receipt = await mintTx.wait();
-                console.log(`   ✅ Mint concluído! Gas usado: ${receipt.gasUsed}`);
-            }
+            console.log(`   Hash: ${mintTx.hash}`);
+            const receipt = await mintTx.wait();
+            console.log(`   Mint concluído! Gas usado: ${receipt.gasUsed}`);
 
+            // Marcar como processado
             this.processedTransactions.add(txId);
-            console.log(`🎉 Transferência cross-chain concluída!\n`);
+            console.log(`Transferência cross-chain concluída!\n`);
 
         } catch (error) {
-            console.error(`❌ Erro ao processar tokens bloqueados:`, error.message);
+            this.handleError('Erro ao processar lock', error);
         }
     }
 
@@ -202,90 +196,88 @@ class RobustOracle {
                 return;
             }
 
-            console.log(`🔥 EVENTO DETECTADO - Tokens Queimados:`);
-            console.log(`   👤 Usuário: ${user}`);
-            console.log(`   💰 Quantidade: ${ethers.formatEther(amount)} tokens`);
-            console.log(`   🎯 Destino: ${destinationChain}`);
-            console.log(`   📍 Endereço: ${destinationAddress}`);
-            console.log(`   🔑 TX ID: ${txId.substring(0, 10)}...`);
+            console.log(`EVENTO DETECTADO - Tokens Queimados:`);
+            console.log(`   Usuário: ${user}`);
+            console.log(`   Quantidade: ${ethers.formatEther(amount)} tokens`);
+            console.log(`   Destino: ${destinationChain}`);
+            console.log(`   Endereço: ${destinationAddress}`);
+            console.log(`   TX ID: ${txId.substring(0, 10)}...`);
 
-            // Aguarda confirmações
-            console.log('⏳ Aguardando confirmações...');
-            await new Promise(resolve => setTimeout(resolve, 3000));
+            // Aguardar confirmações
+            console.log('Aguardando confirmações...');
+            await new Promise(resolve => setTimeout(resolve, 5000));
 
-            // Executa unlock no Moonbeam
-            if (destinationChain.toLowerCase().includes('moonbeam') || destinationChain.toLowerCase().includes('moonbase')) {
-                console.log('🔓 Executando unlock no Moonbeam...');
-                
-                const unlockTx = await this.moonbeamBridge.unlockTokens(destinationAddress, amount, transactionId, {
-                    gasLimit: 300000
-                });
+            // Executar unlock
+            console.log('Executando unlock no Moonbeam...');
+            const unlockTx = await this.moonbeamBridge.unlockTokens(destinationAddress, amount, transactionId, {
+                gasLimit: 300000
+            });
 
-                console.log(`   📝 Hash: ${unlockTx.hash}`);
-                const receipt = await unlockTx.wait();
-                console.log(`   ✅ Unlock concluído! Gas usado: ${receipt.gasUsed}`);
-            }
+            console.log(`   Hash: ${unlockTx.hash}`);
+            const receipt = await unlockTx.wait();
+            console.log(`   Unlock concluído! Gas usado: ${receipt.gasUsed}`);
 
+            // Marcar como processado
             this.processedTransactions.add(txId);
-            console.log(`🎉 Transferência cross-chain concluída!\n`);
+            console.log(`Transferência cross-chain concluída!\n`);
 
         } catch (error) {
-            console.error(`❌ Erro ao processar tokens queimados:`, error.message);
+            this.handleError('Erro ao processar burn', error);
         }
     }
 
-    handleError(error) {
+    handleError(context, error) {
         this.retryAttempts++;
         
-        if (error.message.includes('Filter id') || error.message.includes('does not exist')) {
-            console.log('🔄 Filtro expirado, reconectando...');
-            this.reconnect();
-        } else if (this.retryAttempts <= this.maxRetries) {
-            console.log(`🔄 Tentativa ${this.retryAttempts}/${this.maxRetries} em 5 segundos...`);
-            setTimeout(() => this.reconnect(), 5000);
+        if (error.code === 'FILTER_NOT_FOUND' || error.message.includes('filter not found')) {
+            console.log('Filtro expirado, reconectando...');
+            
+            if (this.retryAttempts <= this.maxRetries) {
+                console.log(`Tentativa ${this.retryAttempts}/${this.maxRetries} em 5 segundos...`);
+                setTimeout(() => {
+                    this.reconnect();
+                }, 5000);
+            } else {
+                console.error('Máximo de tentativas atingido. Parando oracle.');
+                this.stop();
+            }
         } else {
-            console.error('❌ Máximo de tentativas atingido. Reiniciando oracle...');
-            this.restart();
+            console.log('Reconectando oracle...');
+            setTimeout(() => {
+                this.reconnect();
+            }, 3000);
         }
     }
 
     async reconnect() {
         try {
-            console.log('🔄 Reconectando oracle...');
-            
-            // Parar intervalos atuais
-            if (this.moonbeamInterval) clearInterval(this.moonbeamInterval);
-            if (this.astarInterval) clearInterval(this.astarInterval);
-            
-            // Reconfigurar conexões
-            await this.setupConnections();
-            
-            // Reiniciar polling
-            this.startPolling();
-            
             this.retryAttempts = 0;
-            console.log('✅ Reconexão bem-sucedida!');
-            
+            this.stop();
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            await this.initialize();
+            await this.startMonitoring();
+            console.log('Reconexão bem-sucedida!');
         } catch (error) {
-            console.error('❌ Erro na reconexão:', error.message);
-            setTimeout(() => this.reconnect(), 10000);
+            console.error('Erro na reconexão:', error.message);
+            this.handleError('Reconexão', error);
         }
     }
 
     async restart() {
-        console.log('🔄 Reiniciando oracle completamente...');
+        console.log('Reiniciando oracle completamente...');
         this.stop();
-        setTimeout(async () => {
-            await this.initialize();
-            await this.startMonitoring();
-        }, 5000);
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        await this.initialize();
+        await this.startMonitoring();
     }
 
     setupAutoReconnect() {
         // Reconexão preventiva a cada 30 minutos
-        setInterval(() => {
-            console.log('🔄 Reconexão preventiva...');
-            this.reconnect();
+        setInterval(async () => {
+            if (!this.isRunning) return;
+            
+            console.log('Reconexão preventiva...');
+            await this.setupConnections();
         }, this.reconnectInterval);
     }
 
@@ -293,7 +285,7 @@ class RobustOracle {
         this.isRunning = false;
         if (this.moonbeamInterval) clearInterval(this.moonbeamInterval);
         if (this.astarInterval) clearInterval(this.astarInterval);
-        console.log('🛑 Oracle parado');
+        console.log('Oracle parado');
     }
 }
 
@@ -310,13 +302,15 @@ async function main() {
 
     // Exibe estatísticas a cada minuto
     setInterval(() => {
-        console.log(`📊 Transações processadas: ${oracle.processedTransactions.size}`);
-        console.log(`🔄 Status: ${oracle.isRunning ? 'ATIVO' : 'INATIVO'}`);
+        console.log('\n='.repeat(60));
+        console.log(`Transações processadas: ${oracle.processedTransactions.size}`);
+        console.log(`Status: ${oracle.isRunning ? 'ATIVO' : 'INATIVO'}`);
+        console.log('='.repeat(60));
     }, 60000);
 
     // Graceful shutdown
     process.on('SIGINT', () => {
-        console.log('\n🔄 Encerrando oracle...');
+        console.log('\nEncerrando oracle...');
         oracle.stop();
         process.exit(0);
     });
