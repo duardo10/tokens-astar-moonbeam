@@ -22,5 +22,177 @@
     "transactionId": "0x6eb39e9b897dfcba4c84073744ef11e4934ef3f5f008e34e07b7eb3124e58c6a",
     "timestamp": "2025-06-07T17:19:27.364Z",
     "id": 2
+  },
+  {
+    "direction": "Astar → Moonbeam",
+    "amount": "1.0",
+    "error": "transaction execution reverted (action=\"sendTransaction\", data=null, reason=null, invocation=null, revert=null, transaction={ \"data\": \"\", \"from\": \"0xE88a9aC732B1A67fbB407b8C73EB7862439cA604\", \"to\": \"0x0c33d1599cbeAa6D42D43eEb5986f7917c7c467e\" }, receipt={ \"_type\": \"TransactionReceipt\", \"blobGasPrice\": null, \"blobGasUsed\": null, \"blockHash\": \"0x86b9979baaf633d3fc40445d1bc4ab4c0ff59968a49efa009ee69909ff1486bc\", \"blockNumber\": 10617351, \"contractAddress\": null, \"cumulativeGasUsed\": \"167373\", \"from\": \"0xE88a9aC732B1A67fbB407b8C73EB7862439cA604\", \"gasPrice\": \"779371350051\", \"gasUsed\": \"167373\", \"hash\": \"0x5fe26dd6f7aa1fb8ec485dd5c05a1a71d999bf6ab86cd9ea078bf5198e5f041e\", \"index\": 0, \"logs\": [  ], \"logsBloom\": \"0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\", \"root\": null, \"status\": 0, \"to\": \"0x0c33d1599cbeAa6D42D43eEb5986f7917c7c467e\" }, code=CALL_EXCEPTION, version=6.14.3)",
+    "status": "FAILED",
+    "timestamp": "2025-06-07T17:49:45.046Z",
+    "id": 3
+  },
+  {
+    "direction": "Moonbeam → Astar",
+    "amount": "1.0",
+    "lockHash": "0x03fb85f5744688e86041907246f625282bae1ef45c0a35d6d376f0cf0da8958d",
+    "mintHash": "0x7d065f22cd05907d59bbfb8fc6c31c86e8dd12ceb69e9636464ca64246b30adb",
+    "gasUsedLock": "86864",
+    "gasUsedMint": "168272",
+    "status": "SUCCESS",
+    "transactionId": "0x1737284a47b41a1efa7c379caca47754b553411c7500271a7359259e82a7ea83",
+    "timestamp": "2025-06-07T17:53:07.177Z",
+    "id": 4
+  },
+  {
+    "direction": "Moonbeam → Astar",
+    "amount": "1.0",
+    "lockHash": "0x2b990f464dd2d0612d110bef75cb14140b417e85d59c6f47cc2f323d37873f83",
+    "mintHash": "0xcdda5e0384a99de1090073b638e6c2bbe9774c0c3250e2326110b6157fc30747",
+    "gasUsedLock": "86864",
+    "gasUsedMint": "168272",
+    "status": "SUCCESS",
+    "transactionId": "0x0330ec76a8a6086231d84ea5470870fc987d8fbdf759b26c2ee9e6917417d33c",
+    "timestamp": "2025-06-07T17:56:51.628Z",
+    "id": 5
+  },
+  {
+    "direction": "Astar → Moonbeam",
+    "amount": "1.0",
+    "error": "transaction execution reverted (action=\"sendTransaction\", data=null, reason=null, invocation=null, revert=null, transaction={ \"data\": \"\", \"from\": \"0xE88a9aC732B1A67fbB407b8C73EB7862439cA604\", \"to\": \"0x0c33d1599cbeAa6D42D43eEb5986f7917c7c467e\" }, receipt={ \"_type\": \"TransactionReceipt\", \"blobGasPrice\": null, \"blobGasUsed\": null, \"blockHash\": \"0x48ebfbd73d694f5572e3ebecc4bd73662494a43b506a7f6fdc1dee313243fcc9\", \"blockNumber\": 10617434, \"contractAddress\": null, \"cumulativeGasUsed\": \"167373\", \"from\": \"0xE88a9aC732B1A67fbB407b8C73EB7862439cA604\", \"gasPrice\": \"779371350051\", \"gasUsed\": \"167373\", \"hash\": \"0x882423cf1140cdc945870dc43235c3a130376b685611063b1f0dc5f90099cc22\", \"index\": 0, \"logs\": [  ], \"logsBloom\": \"0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\", \"root\": null, \"status\": 0, \"to\": \"0x0c33d1599cbeAa6D42D43eEb5986f7917c7c467e\" }, code=CALL_EXCEPTION, version=6.14.3)",
+    "status": "FAILED",
+    "timestamp": "2025-06-07T17:58:08.133Z",
+    "id": 6
+  },
+  {
+    "direction": "Moonbeam → Astar",
+    "amount": "1.0",
+    "error": "transaction execution reverted (action=\"sendTransaction\", data=null, reason=null, invocation=null, revert=null, transaction={ \"data\": \"\", \"from\": \"0xE88a9aC732B1A67fbB407b8C73EB7862439cA604\", \"to\": \"0x66f77aEaAa01f4AB4B34fA229D550Bf7E10Dd2A5\" }, receipt={ \"_type\": \"TransactionReceipt\", \"blobGasPrice\": null, \"blobGasUsed\": null, \"blockHash\": \"0xdcaefd003c7ddbd7313e3ab8480298e4503d3ed3927094e8f7c12476d82e50b8\", \"blockNumber\": 12401961, \"contractAddress\": null, \"cumulativeGasUsed\": \"1185358\", \"from\": \"0xE88a9aC732B1A67fbB407b8C73EB7862439cA604\", \"gasPrice\": \"31250000\", \"gasUsed\": \"37094\", \"hash\": \"0xdfca1f7739077681f7dc67d0d5ca95e7d4dd8b2bc85daccc560f9b680696c644\", \"index\": 6, \"logs\": [  ], \"logsBloom\": \"0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\", \"root\": null, \"status\": 0, \"to\": \"0x66f77aEaAa01f4AB4B34fA229D550Bf7E10Dd2A5\" }, code=CALL_EXCEPTION, version=6.14.3)",
+    "status": "FAILED",
+    "timestamp": "2025-06-07T18:02:07.028Z",
+    "id": 7
+  },
+  {
+    "direction": "Moonbeam → Astar",
+    "amount": "1.0",
+    "lockHash": "0x9035df390dbeab5c0e19e3a1e003c1e4a4b3699a7957c93703f6ae16bcdceb0b",
+    "mintHash": "0x381ce43e0b532b3ca0f011d6199a300bd30b7b2d790405cc7e9e09af1d10ee38",
+    "gasUsedLock": "86864",
+    "gasUsedMint": "168272",
+    "status": "SUCCESS",
+    "transactionId": "0xd39267841da364c364f1563966ba1f5a0edc295bf548b78a222f1153d68869c6",
+    "timestamp": "2025-06-07T18:07:07.258Z",
+    "id": 8
+  },
+  {
+    "direction": "Astar → Moonbeam",
+    "amount": "1.0",
+    "error": "transaction execution reverted (action=\"sendTransaction\", data=null, reason=null, invocation=null, revert=null, transaction={ \"data\": \"\", \"from\": \"0xE88a9aC732B1A67fbB407b8C73EB7862439cA604\", \"to\": \"0x0c33d1599cbeAa6D42D43eEb5986f7917c7c467e\" }, receipt={ \"_type\": \"TransactionReceipt\", \"blobGasPrice\": null, \"blobGasUsed\": null, \"blockHash\": \"0xefd5d134f603d870bb60088a2f6f3ffdd31c1588f5aac3fa0fdf706b1b588660\", \"blockNumber\": 10617535, \"contractAddress\": null, \"cumulativeGasUsed\": \"167373\", \"from\": \"0xE88a9aC732B1A67fbB407b8C73EB7862439cA604\", \"gasPrice\": \"779371350051\", \"gasUsed\": \"167373\", \"hash\": \"0xfb9630172e01cc39cfa3b0ca6ccffb4912e6773e2729432e1fa9eb94fd2064aa\", \"index\": 0, \"logs\": [  ], \"logsBloom\": \"0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\", \"root\": null, \"status\": 0, \"to\": \"0x0c33d1599cbeAa6D42D43eEb5986f7917c7c467e\" }, code=CALL_EXCEPTION, version=6.14.3)",
+    "status": "FAILED",
+    "timestamp": "2025-06-07T18:08:21.180Z",
+    "id": 9
+  },
+  {
+    "direction": "Moonbeam → Astar",
+    "amount": "1.0",
+    "lockHash": "0x850dc4b7337545b09bb81226114f3fc7339412353f76bdf3fe0d0341e21345dd",
+    "mintHash": "0xead9975d1f2a224e1b06de20b67ed6ebaeacc77a537cc4fde1cf29a0a00389fc",
+    "gasUsedLock": "86864",
+    "gasUsedMint": "168272",
+    "status": "SUCCESS",
+    "transactionId": "0xc0bb49772d4336deb9625131f4d3b7fcbfe8b7a3f36ebc52e46f591f6904935d",
+    "timestamp": "2025-06-07T18:09:45.562Z",
+    "id": 10
+  },
+  {
+    "direction": "Astar → Moonbeam",
+    "amount": "1.0",
+    "error": "transaction execution reverted (action=\"sendTransaction\", data=null, reason=null, invocation=null, revert=null, transaction={ \"data\": \"\", \"from\": \"0xE88a9aC732B1A67fbB407b8C73EB7862439cA604\", \"to\": \"0x0c33d1599cbeAa6D42D43eEb5986f7917c7c467e\" }, receipt={ \"_type\": \"TransactionReceipt\", \"blobGasPrice\": null, \"blobGasUsed\": null, \"blockHash\": \"0x301b5bfd4f01fe824a887ef0b5c96c5212d239a0e2f69a7d7a352895950a926c\", \"blockNumber\": 10617554, \"contractAddress\": null, \"cumulativeGasUsed\": \"167373\", \"from\": \"0xE88a9aC732B1A67fbB407b8C73EB7862439cA604\", \"gasPrice\": \"779371350051\", \"gasUsed\": \"167373\", \"hash\": \"0x5c6aff8b824c4d78fe32f6223727e4b857c5eb2f38faa72f5227cdb4a16975f8\", \"index\": 0, \"logs\": [  ], \"logsBloom\": \"0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\", \"root\": null, \"status\": 0, \"to\": \"0x0c33d1599cbeAa6D42D43eEb5986f7917c7c467e\" }, code=CALL_EXCEPTION, version=6.14.3)",
+    "status": "FAILED",
+    "timestamp": "2025-06-07T18:10:21.403Z",
+    "id": 11
+  },
+  {
+    "direction": "Moonbeam → Astar",
+    "amount": "1.0",
+    "lockHash": "0xd89c43aba5d4ee87083cd8cab3a1959e8e1ccbf1e28ef38a814bfe29a452bbb5",
+    "mintHash": "0xb03bf11dd67f08e08d81cb55622ae374ca194e8701bb1f9a6044543d82baafe8",
+    "gasUsedLock": "86864",
+    "gasUsedMint": "168272",
+    "status": "SUCCESS",
+    "transactionId": "0x649e8478d62b30749e09e4672f7d9fd87d821bd58b681080fdcc23a5a903e288",
+    "timestamp": "2025-06-07T18:15:48.570Z",
+    "id": 12
+  },
+  {
+    "direction": "Moonbeam → Astar",
+    "amount": "1.0",
+    "lockHash": "0x509e38d8b7343369daa7104aaf5a4c03fbd590c9000c323faeedc4346d2ca53e",
+    "mintHash": "0xb3657e276d6b1818f6e5dd9335b9654d6ac784e4372d1f03a8b138452f64ad79",
+    "gasUsedLock": "86864",
+    "gasUsedMint": "168272",
+    "status": "SUCCESS",
+    "transactionId": "0x773d9a342a9d71f042c2ddfb6cda1452699b65ed2b989bf714d731b4dd5140e9",
+    "timestamp": "2025-06-07T18:18:05.778Z",
+    "id": 13
+  },
+  {
+    "direction": "Astar → Moonbeam",
+    "amount": "1.0",
+    "burnHash": "0x78f35ebbd96bb089f9f917ee7e79be51d5f002089259a54e5454bed1200f1285",
+    "unlockHash": "0x2de9de74c3cb8040d507bd9d907901874c93dc9be2193e77b6671ae392190848",
+    "gasUsedBurn": "167440",
+    "gasUsedUnlock": "87280",
+    "status": "SUCCESS",
+    "transactionId": "0x725bea3adf3fe0b1e2bd2c341c237aa586bc708076841d7596dd65a22c68e0f8",
+    "timestamp": "2025-06-07T18:19:49.920Z",
+    "id": 14
+  },
+  {
+    "direction": "Moonbeam → Astar",
+    "amount": "1.0",
+    "lockHash": "0xffdd380ac42826702e468d1f7eabc197a397d1cf36ea4f587e881d99c55191d4",
+    "mintHash": "0xea22c1f2f3e4e11714d0dd65e198ea555b2661669b6772e96be5649757ccccaa",
+    "gasUsedLock": "86864",
+    "gasUsedMint": "168272",
+    "status": "SUCCESS",
+    "transactionId": "0x2521307fee6aed9273bf09ac841bc75359ccd88139d67d285f8d9196bf232d04",
+    "timestamp": "2025-06-07T18:20:43.884Z",
+    "id": 15
+  },
+  {
+    "direction": "Astar → Moonbeam",
+    "amount": "1.0",
+    "burnHash": "0xce1847bb929a17467e561c021a93be6fced5e62ffa614d79f54e2b4ece4602a7",
+    "unlockHash": "0x094e51ed4a9323db03d4bf5b4043fdd3bd20c2c288041dc278162ff7de7dde44",
+    "gasUsedBurn": "167440",
+    "gasUsedUnlock": "87280",
+    "status": "SUCCESS",
+    "transactionId": "0x9a437f78794a9bff85393e1f455b8bf3a0fb6542217cfa8d6e721b80043de575",
+    "timestamp": "2025-06-07T18:21:44.094Z",
+    "id": 16
+  },
+  {
+    "direction": "Moonbeam → Astar",
+    "amount": "1.0",
+    "lockHash": "0x68cec6ef679bf2f36613389bd342cd4c6a5065ef8266d522efacc6cf80e0fc27",
+    "mintHash": "0xe22001f7b62f089c2e4627c3e4cee2f33cf14a0bec8b44b1b3821f2bba24be07",
+    "gasUsedLock": "86864",
+    "gasUsedMint": "168272",
+    "status": "SUCCESS",
+    "transactionId": "0xeb19ad17e22d76a85ede85242377753649f5d54cb25fbff237c02f798cc00d1a",
+    "timestamp": "2025-06-07T18:33:32.244Z",
+    "id": 17
+  },
+  {
+    "direction": "Astar → Moonbeam",
+    "amount": "1.0",
+    "burnHash": "0x6f502469e87528ffc74ddfe6331cc28b1f9e82af9f6a5069eea20ccf1b1e94c4",
+    "unlockHash": "0xec83759815e4fe69c8b343f59cda8fa7fb642e5c8d2c5c3902453beac620f8d4",
+    "gasUsedBurn": "167440",
+    "gasUsedUnlock": "87280",
+    "status": "SUCCESS",
+    "transactionId": "0xc152b534b9bcc59040cecb18ad72a27fbe737098af10561b109a870e3e93dc0e",
+    "timestamp": "2025-06-07T19:43:34.108Z",
+    "id": 18
   }
 ]

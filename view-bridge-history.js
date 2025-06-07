@@ -49,7 +49,7 @@ class BridgeHistoryViewer {
  }
 
  showRecentHistory(count = 10) {
- console.log(`\n ÚLTIMAS ${count} TRANSAÇÕES:');
+ console.log(`\n ÚLTIMAS ${count} TRANSAÇÕES:`);
  console.log('='.repeat(120));
  
  if (this.transactionHistory.length === 0) {

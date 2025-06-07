@@ -25,16 +25,17 @@ class AutoBridgeScheduler {
  "function unlockTokens(address user, uint256 amount, bytes32 transactionId) external"
  ];
 
- this.TOKEN_ABI = [
- "function balanceOf(address owner) view returns (uint256)",
- "function approve(address spender, uint256 amount) returns (bool)"
- ];
+          this.TOKEN_ABI = [
+            "function balanceOf(address owner) view returns (uint256)",
+            "function approve(address spender, uint256 amount) returns (bool)",
+            "function allowance(address owner, address spender) view returns (uint256)"
+        ];
 
- // Estado do scheduler
- this.isRunning = false;
- this.currentDirection = 'moonbeam-to-astar'; // Alterna entre: moonbeam-to-astar, astar-to-moonbeam
- this.transferAmount = ethers.parseEther("1"); // 1 token por transferência
- this.interval = 30 * 60 * 1000; // 30 minutos em millisegundos
+         // Estado do scheduler
+        this.isRunning = false;
+        this.currentDirection = 'moonbeam-to-astar'; // Alterna entre: moonbeam-to-astar, astar-to-moonbeam
+        this.transferAmount = ethers.parseEther("1"); // 1 token por transferência
+        this.interval = 30 * 60 * 1000; // 30 minutos em millisegundos
  
  // Tabela de transações
  this.transactionHistory = [];
@@ -62,9 +63,9 @@ class AutoBridgeScheduler {
  this.astarToken = new ethers.Contract(this.CONFIG.astar.tokenAddress, this.TOKEN_ABI, this.astarWallet);
 
  console.log('Scheduler inicializado com sucesso!');
- console.log(` Endereco: ${this.moonbeamWallet.address}`);
- console.log(` Intervalo: 30 minutos`);
- console.log(` Quantidade por transferencia: ${ethers.formatEther(this.transferAmount)} tokens`);
+console.log(` Endereco: ${this.moonbeamWallet.address}`);
+console.log(` Intervalo: 30 minutos`);
+console.log(` Quantidade por transferencia: ${ethers.formatEther(this.transferAmount)} tokens`);
  
  return true;
  } catch (error) {
@@ -120,22 +121,62 @@ class AutoBridgeScheduler {
  }
  }
 
- async executeMoonbeamToAstar() {
- console.log('\nEXECUTANDO: Moonbeam -> Astar');
- 
- try {
- // 1. Aprovar tokens
- console.log(' Aprovando tokens...');
- const approveTx = await this.moonbeamToken.approve(this.CONFIG.moonbeam.bridgeAddress, this.transferAmount);
- await approveTx.wait();
+     async executeMoonbeamToAstar() {
+        console.log('\nEXECUTANDO: Moonbeam -> Astar');
+        
+        try {
+            // 0. Verificar se bridge Moonbeam tem tokens suficientes para mint futuro
+            console.log(' Verificando saldo do bridge...');
+            const moonbeamBridgeBalance = await this.moonbeamToken.balanceOf(this.CONFIG.moonbeam.bridgeAddress);
+            
+            if (moonbeamBridgeBalance < this.transferAmount) {
+                console.log(` AVISO: Bridge Moonbeam tem apenas ${ethers.formatEther(moonbeamBridgeBalance)} MTK`);
+                console.log(' Isso pode causar problemas em operações Astar->Moonbeam futuras');
+            } else {
+                console.log(` Bridge Moonbeam tem: ${ethers.formatEther(moonbeamBridgeBalance)} MTK - OK`);
+            }
+            
+            // 1. Verificar e aprovar tokens
+            const currentAllowance = await this.moonbeamToken.allowance(this.moonbeamWallet.address, this.CONFIG.moonbeam.bridgeAddress);
+            console.log(` Allowance atual: ${ethers.formatEther(currentAllowance)} MTK`);
+            
+            if (currentAllowance < this.transferAmount) {
+                console.log(' Aprovando tokens...');
+                const approveTx = await this.moonbeamToken.approve(this.CONFIG.moonbeam.bridgeAddress, this.transferAmount);
+                const approveReceipt = await approveTx.wait();
+                console.log(` Hash do Approve: ${approveTx.hash} - Status: ${approveReceipt.status === 1 ? 'SUCESSO' : 'FALHA'}`);
+            } else {
+                console.log(' Tokens ja aprovados');
+            }
 
- // 2. Lock tokens
+ // 2. Lock tokens com retry e gas aumentado
  console.log(' Bloqueando tokens no Moonbeam...');
- const lockTx = await this.moonbeamBridge.lockTokens(
- this.transferAmount,
- "shibuya",
- this.moonbeamWallet.address
- );
+ let lockTx;
+ try {
+     // Tentar com gas estimado + buffer
+     const gasEstimate = await this.moonbeamBridge.lockTokens.estimateGas(
+         this.transferAmount,
+         "shibuya",
+         this.moonbeamWallet.address
+     );
+     console.log(` Gas estimado: ${gasEstimate}`);
+     
+     lockTx = await this.moonbeamBridge.lockTokens(
+         this.transferAmount,
+         "shibuya",
+         this.moonbeamWallet.address,
+         { gasLimit: Number(gasEstimate) + 50000 }
+     );
+ } catch (firstError) {
+     console.log(` Primeira tentativa falhou, tentando com gas fixo alto...`);
+     // Retry com gas muito alto
+     lockTx = await this.moonbeamBridge.lockTokens(
+         this.transferAmount,
+         "shibuya",
+         this.moonbeamWallet.address,
+         { gasLimit: 300000 }
+     );
+ }
 
  console.log(` Hash do Lock: ${lockTx.hash}`);
  const lockReceipt = await lockTx.wait();
@@ -187,22 +228,61 @@ class AutoBridgeScheduler {
  }
  }
 
- async executeAstarToMoonbeam() {
- console.log('\n EXECUTANDO: Astar → Moonbeam');
- 
- try {
- // 1. Aprovar tokens
- console.log(' Aprovando tokens...');
- const approveTx = await this.astarToken.approve(this.CONFIG.astar.bridgeAddress, this.transferAmount);
- await approveTx.wait();
+     async executeAstarToMoonbeam() {
+        console.log('\n EXECUTANDO: Astar → Moonbeam');
+        
+        try {
+            // 0. Verificar se bridge Astar tem tokens suficientes
+            console.log(' Verificando saldo do bridge...');
+            const astarBridgeBalance = await this.astarToken.balanceOf(this.CONFIG.astar.bridgeAddress);
+            
+            if (astarBridgeBalance < this.transferAmount) {
+                throw new Error(`Bridge Astar tem apenas ${ethers.formatEther(astarBridgeBalance)} MTA, precisa de ${ethers.formatEther(this.transferAmount)} MTA. Execute: node deposit-tokens-astar.js`);
+            }
+            
+            console.log(` Bridge Astar tem: ${ethers.formatEther(astarBridgeBalance)} MTA - OK`);
+            
+            // 1. Verificar e aprovar tokens
+            const currentAllowance = await this.astarToken.allowance(this.astarWallet.address, this.CONFIG.astar.bridgeAddress);
+            console.log(` Allowance atual: ${ethers.formatEther(currentAllowance)} MTA`);
+            
+            if (currentAllowance < this.transferAmount) {
+                console.log(' Aprovando tokens...');
+                const approveTx = await this.astarToken.approve(this.CONFIG.astar.bridgeAddress, this.transferAmount);
+                const approveReceipt = await approveTx.wait();
+                console.log(` Hash do Approve: ${approveTx.hash} - Status: ${approveReceipt.status === 1 ? 'SUCESSO' : 'FALHA'}`);
+            } else {
+                console.log(' Tokens ja aprovados');
+            }
 
- // 2. Burn tokens
+ // 2. Burn tokens com retry e gas aumentado
  console.log(' Queimando tokens no Astar...');
- const burnTx = await this.astarBridge.burnTokens(
- this.transferAmount,
- "moonbeam",
- this.astarWallet.address
- );
+ let burnTx;
+ try {
+     // Tentar com gas estimado + buffer
+     const gasEstimate = await this.astarBridge.burnTokens.estimateGas(
+         this.transferAmount,
+         "moonbeam",
+         this.astarWallet.address
+     );
+     console.log(` Gas estimado: ${gasEstimate}`);
+     
+     burnTx = await this.astarBridge.burnTokens(
+         this.transferAmount,
+         "moonbeam",
+         this.astarWallet.address,
+         { gasLimit: Number(gasEstimate) + 100000 }
+     );
+ } catch (firstError) {
+     console.log(` Primeira tentativa falhou, tentando com gas fixo alto...`);
+     // Retry com gas muito alto
+     burnTx = await this.astarBridge.burnTokens(
+         this.transferAmount,
+         "moonbeam",
+         this.astarWallet.address,
+         { gasLimit: 500000 }
+     );
+ }
 
  console.log(` Hash do Burn: ${burnTx.hash}`);
  const burnReceipt = await burnTx.wait();
@@ -276,8 +356,8 @@ class AutoBridgeScheduler {
  await this.showBalances();
 
  if (success) {
- console.log(`\n Próxima execução em 30 minutos: ${new Date(Date.now() + this.interval).toLocaleString()}`);
- }
+console.log(`\n Próxima execução em 30 minutos: ${new Date(Date.now() + this.interval).toLocaleString()}`);
+}
 
  return success;
  }
@@ -295,14 +375,14 @@ class AutoBridgeScheduler {
  // Executar imediatamente
  await this.executeNextTransfer();
  
- // Configurar execução a cada 30 minutos
- this.schedulerInterval = setInterval(async () => {
- if (this.isRunning) {
- await this.executeNextTransfer();
- }
- }, this.interval);
+         // Configurar execução a cada 30 minutos
+        this.schedulerInterval = setInterval(async () => {
+            if (this.isRunning) {
+                await this.executeNextTransfer();
+            }
+        }, this.interval);
 
- console.log('\n Scheduler ativo! Rodando automaticamente a cada 30 minutos...');
+        console.log('\n Scheduler ativo! Rodando automaticamente a cada 30 minutos...');
  }
 
  stop() {
@@ -387,7 +467,7 @@ async function main() {
  await scheduler.showBalances();
 
  console.log('\n Comandos disponíveis:');
- console.log(' CTRL+C: Parar o scheduler');
+console.log(' CTRL+C: Parar o scheduler');
  console.log(' O scheduler executará automaticamente a cada 30 minutos\n');
 
  // Iniciar scheduler
