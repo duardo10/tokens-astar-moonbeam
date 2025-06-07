@@ -1,0 +1,26 @@
+[
+  {
+    "direction": "Moonbeam → Astar",
+    "amount": "1.0",
+    "lockHash": "0xfe28978f9b82be569f27d8dcd684bed719e882c35221a16668ac6239b3157e57",
+    "mintHash": "0x0642dd53fc6b59766f69d249c72b98fadda2b92aebb04aa5278c7a08e42577a5",
+    "gasUsedLock": "86864",
+    "gasUsedMint": "168272",
+    "status": "SUCCESS",
+    "transactionId": "0xa8137acb10510619dbef65b2756e10f38b1c012072a6b6ba1574c4fa1e9eec35",
+    "timestamp": "2025-06-07T16:54:50.976Z",
+    "id": 1
+  },
+  {
+    "direction": "Moonbeam → Astar",
+    "amount": "1.0",
+    "lockHash": "0xb0c978e6c6b10b5eaf388cc2f7f591c19e30918e34668af74043d9156c73aa2f",
+    "mintHash": "0x578df9720c9fa198221b231bdf5b09a2e65deb3301d0bc2215bb772c62f03b73",
+    "gasUsedLock": "86864",
+    "gasUsedMint": "168272",
+    "status": "SUCCESS",
+    "transactionId": "0x6eb39e9b897dfcba4c84073744ef11e4934ef3f5f008e34e07b7eb3124e58c6a",
+    "timestamp": "2025-06-07T17:19:27.364Z",
+    "id": 2
+  }
+]
