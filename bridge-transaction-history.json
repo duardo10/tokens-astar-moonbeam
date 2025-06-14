@@ -194,5 +194,57 @@
     "transactionId": "0xc152b534b9bcc59040cecb18ad72a27fbe737098af10561b109a870e3e93dc0e",
     "timestamp": "2025-06-07T19:43:34.108Z",
     "id": 18
+  },
+  {
+    "direction": "Moonbeam → Astar",
+    "amount": "1.0",
+    "lockHash": "0x4e6cefed55131d12ba19cf073e003ad8a09b901fe8bb08ac7ea714bedfd5033b",
+    "mintHash": "0x519c213f600b0a5d8c8e45790fa28f7fb4446bd3170c33e074212251a2a2caae",
+    "gasUsedLock": "86864",
+    "gasUsedMint": "168272",
+    "status": "SUCCESS",
+    "transactionId": "0x85e03c70c0a7de4e700261b193f0a4dca0280c9850882f9416a807ee7163a685",
+    "timestamp": "2025-06-07T20:13:20.975Z",
+    "id": 19
+  },
+  {
+    "direction": "Astar → Moonbeam",
+    "amount": "1.0",
+    "error": "getaddrinfo ENOTFOUND evm.shibuya.astar.network",
+    "status": "FAILED",
+    "timestamp": "2025-06-07T21:15:34.597Z",
+    "id": 20
+  },
+  {
+    "direction": "Moonbeam → Astar",
+    "amount": "1.0",
+    "lockHash": "0x6e08d14f64222a697ad5a1c2bd99e67fe02bcd40772bfa5bf0e64913837f747d",
+    "mintHash": "0xf92e3e88ac10cb6c9b6a88ef7e5fc063368b139c83a82f2a58fe1cc54acb0fc3",
+    "gasUsedLock": "86864",
+    "gasUsedMint": "168272",
+    "status": "SUCCESS",
+    "transactionId": "0x63e7c089f3b150312472427ebdd8341f88e743f13095d16a9febf402057b0f23",
+    "timestamp": "2025-06-07T21:46:14.288Z",
+    "id": 21
+  },
+  {
+    "direction": "Astar → Moonbeam",
+    "amount": "1.0",
+    "error": "request timeout (code=TIMEOUT, version=6.14.3)",
+    "status": "FAILED",
+    "timestamp": "2025-06-08T00:08:38.828Z",
+    "id": 22
+  },
+  {
+    "direction": "Moonbeam → Astar",
+    "amount": "1.0",
+    "lockHash": "0x2718847a6e713e417e7758291c46778c7868b7816179f9713a8d0f978d3870df",
+    "mintHash": "0xe8d3b1e75cc2e17faff596b6f09f5e9b645a17509c467cde814a56875367d6ce",
+    "gasUsedLock": "86864",
+    "gasUsedMint": "168272",
+    "status": "SUCCESS",
+    "transactionId": "0xd97ea7a71d8cf578d64ad5e894cea6aa47e5c451c1a9cbba67b1e747ed9cd366",
+    "timestamp": "2025-06-08T00:09:22.105Z",
+    "id": 23
   }
 ]

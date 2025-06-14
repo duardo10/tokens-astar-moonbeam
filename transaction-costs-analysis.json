@@ -1,0 +1,996 @@
+[
+  {
+    "direction": "Moonbeam -> Astar",
+    "timestamp": "2025-06-10T12:29:04.672Z",
+    "transferAmount": "1.0",
+    "testnetInfo": {
+      "moonbeamFaucet": "https://faucet.moonbeam.network/",
+      "astarFaucet": "https://portal.astar.network/astar/assets"
+    },
+    "initialNetworkInfo": {
+      "moonbeam": {
+        "network": "Moonbeam",
+        "error": "provider.getGasPrice is not a function"
+      },
+      "astar": {
+        "network": "Astar",
+        "error": "provider.getGasPrice is not a function"
+      }
+    },
+    "initialNativeBalances": {
+      "moonbeam": {
+        "raw": "7668909075743579498",
+        "formatted": "7.668909075743579498",
+        "currency": "DEV",
+        "wei": "7668909075743579498"
+      },
+      "astar": {
+        "raw": "61401831827505434953",
+        "formatted": "61.401831827505434953",
+        "currency": "SBY",
+        "wei": "61401831827505434953"
+      }
+    },
+    "gasEstimates": null,
+    "approveTransaction": {
+      "network": "Moonbeam",
+      "txHash": "0x1fc64026e9cb8c50cec8aa8d35e80d79269cf2cfa771bed3b59a061ed14dc993",
+      "status": "SUCCESS",
+      "blockNumber": 12441703,
+      "blockHash": "0x60c4db7bed41db55fbe9f57a98342faf5d70fc2606729f2dcd4e4502b266a5d6",
+      "from": "0xE88a9aC732B1A67fbB407b8C73EB7862439cA604",
+      "to": "0x66f77aEaAa01f4AB4B34fA229D550Bf7E10Dd2A5",
+      "value": "0",
+      "gasLimit": "47218",
+      "gasUsed": "46952",
+      "gasPrice": "31250000",
+      "gasPriceGwei": "0.03125",
+      "effectiveGasPrice": "31250000",
+      "effectiveGasPriceGwei": "0.03125",
+      "totalCost": "1467250000000",
+      "totalCostFormatted": "0.00000146725",
+      "totalEffectiveCost": "1467250000000",
+      "totalEffectiveCostFormatted": "0.00000146725",
+      "gasEfficiency": "99.44",
+      "currency": "DEV",
+      "explorerUrl": "https://moonbase.moonscan.io/tx/0x1fc64026e9cb8c50cec8aa8d35e80d79269cf2cfa771bed3b59a061ed14dc993",
+      "cumulativeGasUsed": "46952",
+      "logsBloom": "0x00000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000002000000000000000000000000000000000040000000040000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000200000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000800000000000000000010000000000000000000000000000000000000000000008000000000000000",
+      "logs": 1
+    },
+    "lockTransaction": {
+      "network": "Moonbeam",
+      "txHash": "0xfa616b9513dd5d909d519c987690d1badedfc545773a90a9ab836cef2220ccc8",
+      "status": "SUCCESS",
+      "blockNumber": 12441704,
+      "blockHash": "0xc696b3ba74c0aa5180a96bddec02a3151270bbd22202b8063e8e4b4b475aa985",
+      "from": "0xE88a9aC732B1A67fbB407b8C73EB7862439cA604",
+      "to": "0xAeBF38ea2Ac91FD912DD88b839b1E7E175063249",
+      "value": "0",
+      "gasLimit": "88385",
+      "gasUsed": "86864",
+      "gasPrice": "31250000",
+      "gasPriceGwei": "0.03125",
+      "effectiveGasPrice": "31250000",
+      "effectiveGasPriceGwei": "0.03125",
+      "totalCost": "2714500000000",
+      "totalCostFormatted": "0.0000027145",
+      "totalEffectiveCost": "2714500000000",
+      "totalEffectiveCostFormatted": "0.0000027145",
+      "gasEfficiency": "98.28",
+      "currency": "DEV",
+      "explorerUrl": "https://moonbase.moonscan.io/tx/0xfa616b9513dd5d909d519c987690d1badedfc545773a90a9ab836cef2220ccc8",
+      "cumulativeGasUsed": "86864",
+      "logsBloom": "0x00000000000000001000000000000000000000000000000000000000000000000000008000000000000000020000000000000000000000000000000000000000000000000000002000000008000000000000000000000000040000000040000000000000000000000000000000000000000000000000000000000010000000000000200000000000000000000000000000200000000000000000000000000000040000000000000000000000000000200800000000010000000000000000000040000002000000000000000000004000000000000000001800000010000000000000000000000000000000000000000000000000000000008000000000000000",
+      "logs": 2
+    },
+    "mintTransaction": {
+      "network": "Astar",
+      "txHash": "0xafbe3779fffcfd1cc645503ffccfb33dcbec0cb9d1651f9b7a051905e19072ea",
+      "status": "SUCCESS",
+      "blockNumber": 10656727,
+      "blockHash": "0x3d499333ca7ff170e7a560bca7848c606e2d9c8bd89669b20d893440959043c3",
+      "from": "0xE88a9aC732B1A67fbB407b8C73EB7862439cA604",
+      "to": "0x0c33d1599cbeAa6D42D43eEb5986f7917c7c467e",
+      "value": "0",
+      "gasLimit": "300000",
+      "gasUsed": "168272",
+      "gasPrice": "779371350051",
+      "gasPriceGwei": "779.371350051",
+      "effectiveGasPrice": "779371350051",
+      "effectiveGasPriceGwei": "779.371350051",
+      "totalCost": "131146375815781872",
+      "totalCostFormatted": "0.131146375815781872",
+      "totalEffectiveCost": "131146375815781872",
+      "totalEffectiveCostFormatted": "0.131146375815781872",
+      "gasEfficiency": "56.09",
+      "currency": "SBY",
+      "explorerUrl": "https://shibuya.subscan.io/tx/0xafbe3779fffcfd1cc645503ffccfb33dcbec0cb9d1651f9b7a051905e19072ea",
+      "cumulativeGasUsed": "168272",
+      "logsBloom": "0x00000000000800000000000000000000000000000010100000000000000000000800000000002000000000000000000000000000000000001000000000000000000000000000000000000008000000000000000000000000000000000048000000000000000000000000000010000000000000000000000000000018000000000000200000000000200400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000200000000000000000000000000000000000000000000000100000000000000000000400000000000000000000000010008000000000000000",
+      "logs": 2
+    },
+    "finalNativeBalances": {
+      "moonbeam": {
+        "raw": "7668904893993579498",
+        "formatted": "7.668904893993579498",
+        "currency": "DEV",
+        "wei": "7668904893993579498"
+      },
+      "astar": {
+        "raw": "61270685451689653081",
+        "formatted": "61.270685451689653081",
+        "currency": "SBY",
+        "wei": "61270685451689653081"
+      }
+    },
+    "totalCosts": {
+      "moonbeamTotal": "0.00000418",
+      "astarTotal": "0.13114638",
+      "devSpent": "0.00000418",
+      "sbySpent": "0.13114638",
+      "devSpentReal": "0.00000418",
+      "sbySpentReal": "0.13114638",
+      "totalGasUsed": {
+        "approve": "46952",
+        "lock": "86864",
+        "mint": "168272"
+      }
+    },
+    "success": true
+  },
+  {
+    "direction": "Moonbeam -> Astar",
+    "timestamp": "2025-06-10T12:52:43.154Z",
+    "transferAmount": "1.0",
+    "testnetInfo": {
+      "moonbeamFaucet": "https://faucet.moonbeam.network/",
+      "astarFaucet": "https://portal.astar.network/astar/assets"
+    },
+    "initialNetworkInfo": {
+      "moonbeam": {
+        "network": "Moonbeam",
+        "chainId": "1287",
+        "error": "provider.getGasPrice is not a function"
+      },
+      "astar": {
+        "network": "Astar",
+        "chainId": "81",
+        "error": "provider.getGasPrice is not a function"
+      }
+    },
+    "initialNativeBalances": {
+      "moonbeam": {
+        "raw": "7668904893993579498",
+        "formatted": "7.668904893993579498",
+        "currency": "DEV",
+        "wei": "7668904893993579498"
+      },
+      "astar": {
+        "raw": "61270685451689653081",
+        "formatted": "61.270685451689653081",
+        "currency": "SBY",
+        "wei": "61270685451689653081"
+      }
+    },
+    "gasEstimates": {
+      "approve": "47218",
+      "lock": "~87000",
+      "mint": "~168000"
+    },
+    "approveTransaction": {
+      "network": "Moonbeam",
+      "txHash": "0x10a1b5e3b08e264043f3604d16c61aade3a9003fcaa150b9e849fca531a51ef1",
+      "status": "SUCCESS",
+      "blockNumber": 12441939,
+      "blockHash": "0xf390c76b8e46420f61d46f78a646d258153c9945113e01a5f7155b43140647f8",
+      "from": "0xE88a9aC732B1A67fbB407b8C73EB7862439cA604",
+      "to": "0x66f77aEaAa01f4AB4B34fA229D550Bf7E10Dd2A5",
+      "value": "0",
+      "gasLimit": "47218",
+      "gasUsed": "46952",
+      "gasPrice": "31250000",
+      "gasPriceGwei": "0.03125",
+      "effectiveGasPrice": "31250000",
+      "effectiveGasPriceGwei": "0.03125",
+      "totalCost": "1467250000000",
+      "totalCostFormatted": "0.00000146725",
+      "totalEffectiveCost": "1467250000000",
+      "totalEffectiveCostFormatted": "0.00000146725",
+      "gasEfficiency": "99.44",
+      "currency": "DEV",
+      "explorerUrl": "https://moonbase.moonscan.io/tx/0x10a1b5e3b08e264043f3604d16c61aade3a9003fcaa150b9e849fca531a51ef1",
+      "cumulativeGasUsed": "46952",
+      "logsBloom": "0x00000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000002000000000000000000000000000000000040000000040000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000200000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000800000000000000000010000000000000000000000000000000000000000000008000000000000000",
+      "logs": 1
+    },
+    "lockTransaction": {
+      "network": "Moonbeam",
+      "txHash": "0x475114d09d53af16f51b17bdc87822056c1ba88da2e55e08365614adf8ef2acc",
+      "status": "SUCCESS",
+      "blockNumber": 12441941,
+      "blockHash": "0xac5fe86958133d3ea1b46309c5828ec68d734ca455026bad102ca9ed7bdf9f99",
+      "from": "0xE88a9aC732B1A67fbB407b8C73EB7862439cA604",
+      "to": "0xAeBF38ea2Ac91FD912DD88b839b1E7E175063249",
+      "value": "0",
+      "gasLimit": "88385",
+      "gasUsed": "86864",
+      "gasPrice": "31250000",
+      "gasPriceGwei": "0.03125",
+      "effectiveGasPrice": "31250000",
+      "effectiveGasPriceGwei": "0.03125",
+      "totalCost": "2714500000000",
+      "totalCostFormatted": "0.0000027145",
+      "totalEffectiveCost": "2714500000000",
+      "totalEffectiveCostFormatted": "0.0000027145",
+      "gasEfficiency": "98.28",
+      "currency": "DEV",
+      "explorerUrl": "https://moonbase.moonscan.io/tx/0x475114d09d53af16f51b17bdc87822056c1ba88da2e55e08365614adf8ef2acc",
+      "cumulativeGasUsed": "86864",
+      "logsBloom": "0x00000000000000001000000000000000000000000000000000000000000000000100008000000000000000020000000000000000000000000000000000000000000200000000002000000008000000000000000000000000040000000040000000000000000000000000000000000000000000000000000000000010000000000000200000100000000000000000000000200000000000000000000000000000040000000000000000000000000000200000000000010000000000000000000040000002000000000000000000000000000000000000001800000000000000000000000000000000000000000000000000000000000000008000000000000000",
+      "logs": 2
+    },
+    "mintTransaction": {
+      "network": "Astar",
+      "txHash": "0x242309dfc5da0bed0cb7817396f91aeee7fa153f7b9097ac8ce36663d4badfba",
+      "status": "SUCCESS",
+      "blockNumber": 10656961,
+      "blockHash": "0x3f0973c3385936cc7e0db2ef6bd64fa9d387947e9d9ee8708b511b5b68cd5af7",
+      "from": "0xE88a9aC732B1A67fbB407b8C73EB7862439cA604",
+      "to": "0x0c33d1599cbeAa6D42D43eEb5986f7917c7c467e",
+      "value": "0",
+      "gasLimit": "300000",
+      "gasUsed": "168272",
+      "gasPrice": "779371350051",
+      "gasPriceGwei": "779.371350051",
+      "effectiveGasPrice": "779371350051",
+      "effectiveGasPriceGwei": "779.371350051",
+      "totalCost": "131146375815781872",
+      "totalCostFormatted": "0.131146375815781872",
+      "totalEffectiveCost": "131146375815781872",
+      "totalEffectiveCostFormatted": "0.131146375815781872",
+      "gasEfficiency": "56.09",
+      "currency": "SBY",
+      "explorerUrl": "https://shibuya.subscan.io/tx/0x242309dfc5da0bed0cb7817396f91aeee7fa153f7b9097ac8ce36663d4badfba",
+      "cumulativeGasUsed": "168272",
+      "logsBloom": "0x00000000000800000000000000000000000000000010100000000000000000000800000000002000000000000000000000000000000000001000000000000000000000000000000000000008000200000000000000000000000000000040000000000000000000000000000000000000000000000000000000000010000000000000200000000000200400000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000002000000200000000000000000000000000000000000000000000000100000000000000000000400000000000000000000000010008000000000000000",
+      "logs": 2
+    },
+    "finalNativeBalances": {
+      "moonbeam": {
+        "raw": "7668900712243579498",
+        "formatted": "7.668900712243579498",
+        "currency": "DEV",
+        "wei": "7668900712243579498"
+      },
+      "astar": {
+        "raw": "61139539075873871209",
+        "formatted": "61.139539075873871209",
+        "currency": "SBY",
+        "wei": "61139539075873871209"
+      }
+    },
+    "totalCosts": {
+      "moonbeamTotal": "0.00000418",
+      "astarTotal": "0.13114638",
+      "devSpent": "0.00000418",
+      "sbySpent": "0.13114638",
+      "devSpentReal": "0.00000418",
+      "sbySpentReal": "0.13114638",
+      "totalGasUsed": {
+        "approve": "46952",
+        "lock": "86864",
+        "mint": "168272"
+      }
+    },
+    "success": true
+  },
+  {
+    "direction": "Moonbeam -> Astar",
+    "timestamp": "2025-06-10T12:53:28.096Z",
+    "transferAmount": "1.0",
+    "testnetInfo": {
+      "moonbeamFaucet": "https://faucet.moonbeam.network/",
+      "astarFaucet": "https://portal.astar.network/astar/assets"
+    },
+    "initialNetworkInfo": {
+      "moonbeam": {
+        "network": "Moonbeam",
+        "chainId": "1287",
+        "error": "provider.getGasPrice is not a function"
+      },
+      "astar": {
+        "network": "Astar",
+        "chainId": "81",
+        "error": "provider.getGasPrice is not a function"
+      }
+    },
+    "initialNativeBalances": {
+      "moonbeam": {
+        "raw": "7668900712243579498",
+        "formatted": "7.668900712243579498",
+        "currency": "DEV",
+        "wei": "7668900712243579498"
+      },
+      "astar": {
+        "raw": "61139539075873871209",
+        "formatted": "61.139539075873871209",
+        "currency": "SBY",
+        "wei": "61139539075873871209"
+      }
+    },
+    "gasEstimates": {
+      "approve": "47218",
+      "lock": "~87000",
+      "mint": "~168000"
+    },
+    "approveTransaction": {
+      "network": "Moonbeam",
+      "txHash": "0x220245019f603a273adc737967b7176bd296730b9c44eb1e9b2436547710103e",
+      "status": "SUCCESS",
+      "blockNumber": 12441946,
+      "blockHash": "0x0aad6ad1ab78c2e5e1852dfe54d35d313f910b7c635273c2a3daf6d8c089bbff",
+      "from": "0xE88a9aC732B1A67fbB407b8C73EB7862439cA604",
+      "to": "0x66f77aEaAa01f4AB4B34fA229D550Bf7E10Dd2A5",
+      "value": "0",
+      "gasLimit": "47218",
+      "gasUsed": "46952",
+      "gasPrice": "31250000",
+      "gasPriceGwei": "0.03125",
+      "effectiveGasPrice": "31250000",
+      "effectiveGasPriceGwei": "0.03125",
+      "totalCost": "1467250000000",
+      "totalCostFormatted": "0.00000146725",
+      "totalEffectiveCost": "1467250000000",
+      "totalEffectiveCostFormatted": "0.00000146725",
+      "gasEfficiency": "99.44",
+      "currency": "DEV",
+      "explorerUrl": "https://moonbase.moonscan.io/tx/0x220245019f603a273adc737967b7176bd296730b9c44eb1e9b2436547710103e",
+      "cumulativeGasUsed": "46952",
+      "logsBloom": "0x00000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000002000000000000000000000000000000000040000000040000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000200000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000800000000000000000010000000000000000000000000000000000000000000008000000000000000",
+      "logs": 1
+    },
+    "lockTransaction": {
+      "network": "Moonbeam",
+      "txHash": "0x380116fa418d224d27cf5bec5771f3061c5382803dbe9cc4713565253d183b95",
+      "status": "SUCCESS",
+      "blockNumber": 12441947,
+      "blockHash": "0xa6e8579c7071b7583f5de8b9d9a63966f6787759c21cffd5a1cde68d001810a4",
+      "from": "0xE88a9aC732B1A67fbB407b8C73EB7862439cA604",
+      "to": "0xAeBF38ea2Ac91FD912DD88b839b1E7E175063249",
+      "value": "0",
+      "gasLimit": "88385",
+      "gasUsed": "86864",
+      "gasPrice": "31250000",
+      "gasPriceGwei": "0.03125",
+      "effectiveGasPrice": "31250000",
+      "effectiveGasPriceGwei": "0.03125",
+      "totalCost": "2714500000000",
+      "totalCostFormatted": "0.0000027145",
+      "totalEffectiveCost": "2714500000000",
+      "totalEffectiveCostFormatted": "0.0000027145",
+      "gasEfficiency": "98.28",
+      "currency": "DEV",
+      "explorerUrl": "https://moonbase.moonscan.io/tx/0x380116fa418d224d27cf5bec5771f3061c5382803dbe9cc4713565253d183b95",
+      "cumulativeGasUsed": "86864",
+      "logsBloom": "0x00000000000000001000000000000000000000000000000000000000000000000000008000000000000000020000000000000000000000000000000000000000000000000000002004000008000000000000000000000000040000000040000000000000000000000000000000000000000000000000000000000010000000000000200000000000000000000000000000200000000000000000000000000000040000000000000000000000000000200000000000010000000000000000000040000002000000000000000000000000000000000100001800000000000000000000000000000000010000000000000000000000000000008000000000000000",
+      "logs": 2
+    },
+    "mintTransaction": {
+      "network": "Astar",
+      "txHash": "0x8573a389bb33c610f3d4d93061de619a10bbbb702ba78cad3536504da897ce6e",
+      "status": "SUCCESS",
+      "blockNumber": 10656967,
+      "blockHash": "0xfe23b26cbea1a746ffac4c9aae4d316ca10546fb8d035a63d4645986c74acd1a",
+      "from": "0xE88a9aC732B1A67fbB407b8C73EB7862439cA604",
+      "to": "0x0c33d1599cbeAa6D42D43eEb5986f7917c7c467e",
+      "value": "0",
+      "gasLimit": "300000",
+      "gasUsed": "168272",
+      "gasPrice": "779371350051",
+      "gasPriceGwei": "779.371350051",
+      "effectiveGasPrice": "779371350051",
+      "effectiveGasPriceGwei": "779.371350051",
+      "totalCost": "131146375815781872",
+      "totalCostFormatted": "0.131146375815781872",
+      "totalEffectiveCost": "131146375815781872",
+      "totalEffectiveCostFormatted": "0.131146375815781872",
+      "gasEfficiency": "56.09",
+      "currency": "SBY",
+      "explorerUrl": "https://shibuya.subscan.io/tx/0x8573a389bb33c610f3d4d93061de619a10bbbb702ba78cad3536504da897ce6e",
+      "cumulativeGasUsed": "168272",
+      "logsBloom": "0x00000000000800000000000000000000000000000010100000000000000000000800000000002000000000002000000000000000000000001000000000000000000000000000000000000008000000000000000000000000000000000040000000000000000000000000000000000080000000000000000000000010000000000000200000000000200400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000200000000000000000000000000000000000000000000000100000000000000000000400000000000000000000000010008000000000400000",
+      "logs": 2
+    },
+    "finalNativeBalances": {
+      "moonbeam": {
+        "raw": "7668896530493579498",
+        "formatted": "7.668896530493579498",
+        "currency": "DEV",
+        "wei": "7668896530493579498"
+      },
+      "astar": {
+        "raw": "61008392700058089337",
+        "formatted": "61.008392700058089337",
+        "currency": "SBY",
+        "wei": "61008392700058089337"
+      }
+    },
+    "totalCosts": {
+      "moonbeamTotal": "0.00000418",
+      "astarTotal": "0.13114638",
+      "devSpent": "0.00000418",
+      "sbySpent": "0.13114638",
+      "devSpentReal": "0.00000418",
+      "sbySpentReal": "0.13114638",
+      "totalGasUsed": {
+        "approve": "46952",
+        "lock": "86864",
+        "mint": "168272"
+      }
+    },
+    "success": true
+  },
+  {
+    "bridgeTransactionId": 1,
+    "direction": "Moonbeam -> Astar",
+    "timestamp": "2025-06-07T16:54:50.976Z",
+    "transferAmount": "1.0",
+    "success": true,
+    "totalCosts": {
+      "devSpent": "0.00000418",
+      "sbySpent": "0.13114638",
+      "devSpentReal": "0.00000418",
+      "sbySpentReal": "0.13114638",
+      "moonbeamTotal": "0.00000418",
+      "astarTotal": "0.13114638",
+      "totalGasUsed": {
+        "total": 255136
+      }
+    },
+    "bridgeHashes": {
+      "lockHash": "0xfe28978f9b82be569f27d8dcd684bed719e882c35221a16668ac6239b3157e57",
+      "mintHash": "0x0642dd53fc6b59766f69d249c72b98fadda2b92aebb04aa5278c7a08e42577a5"
+    },
+    "testnetInfo": {
+      "moonbeamFaucet": "https://faucet.moonbeam.network/",
+      "astarFaucet": "https://portal.astar.network/astar/assets"
+    }
+  },
+  {
+    "bridgeTransactionId": 2,
+    "direction": "Moonbeam -> Astar",
+    "timestamp": "2025-06-07T17:19:27.364Z",
+    "transferAmount": "1.0",
+    "success": true,
+    "totalCosts": {
+      "devSpent": "0.00000418",
+      "sbySpent": "0.13114638",
+      "devSpentReal": "0.00000418",
+      "sbySpentReal": "0.13114638",
+      "moonbeamTotal": "0.00000418",
+      "astarTotal": "0.13114638",
+      "totalGasUsed": {
+        "total": 255136
+      }
+    },
+    "bridgeHashes": {
+      "lockHash": "0xb0c978e6c6b10b5eaf388cc2f7f591c19e30918e34668af74043d9156c73aa2f",
+      "mintHash": "0x578df9720c9fa198221b231bdf5b09a2e65deb3301d0bc2215bb772c62f03b73"
+    },
+    "testnetInfo": {
+      "moonbeamFaucet": "https://faucet.moonbeam.network/",
+      "astarFaucet": "https://portal.astar.network/astar/assets"
+    }
+  },
+  {
+    "bridgeTransactionId": 4,
+    "direction": "Moonbeam -> Astar",
+    "timestamp": "2025-06-07T17:53:07.177Z",
+    "transferAmount": "1.0",
+    "success": true,
+    "totalCosts": {
+      "devSpent": "0.00000418",
+      "sbySpent": "0.13114638",
+      "devSpentReal": "0.00000418",
+      "sbySpentReal": "0.13114638",
+      "moonbeamTotal": "0.00000418",
+      "astarTotal": "0.13114638",
+      "totalGasUsed": {
+        "total": 255136
+      }
+    },
+    "bridgeHashes": {
+      "lockHash": "0x03fb85f5744688e86041907246f625282bae1ef45c0a35d6d376f0cf0da8958d",
+      "mintHash": "0x7d065f22cd05907d59bbfb8fc6c31c86e8dd12ceb69e9636464ca64246b30adb"
+    },
+    "testnetInfo": {
+      "moonbeamFaucet": "https://faucet.moonbeam.network/",
+      "astarFaucet": "https://portal.astar.network/astar/assets"
+    }
+  },
+  {
+    "bridgeTransactionId": 5,
+    "direction": "Moonbeam -> Astar",
+    "timestamp": "2025-06-07T17:56:51.628Z",
+    "transferAmount": "1.0",
+    "success": true,
+    "totalCosts": {
+      "devSpent": "0.00000418",
+      "sbySpent": "0.13114638",
+      "devSpentReal": "0.00000418",
+      "sbySpentReal": "0.13114638",
+      "moonbeamTotal": "0.00000418",
+      "astarTotal": "0.13114638",
+      "totalGasUsed": {
+        "total": 255136
+      }
+    },
+    "bridgeHashes": {
+      "lockHash": "0x2b990f464dd2d0612d110bef75cb14140b417e85d59c6f47cc2f323d37873f83",
+      "mintHash": "0xcdda5e0384a99de1090073b638e6c2bbe9774c0c3250e2326110b6157fc30747"
+    },
+    "testnetInfo": {
+      "moonbeamFaucet": "https://faucet.moonbeam.network/",
+      "astarFaucet": "https://portal.astar.network/astar/assets"
+    }
+  },
+  {
+    "bridgeTransactionId": 8,
+    "direction": "Moonbeam -> Astar",
+    "timestamp": "2025-06-07T18:07:07.258Z",
+    "transferAmount": "1.0",
+    "success": true,
+    "totalCosts": {
+      "devSpent": "0.00000418",
+      "sbySpent": "0.13114638",
+      "devSpentReal": "0.00000418",
+      "sbySpentReal": "0.13114638",
+      "moonbeamTotal": "0.00000418",
+      "astarTotal": "0.13114638",
+      "totalGasUsed": {
+        "total": 255136
+      }
+    },
+    "bridgeHashes": {
+      "lockHash": "0x9035df390dbeab5c0e19e3a1e003c1e4a4b3699a7957c93703f6ae16bcdceb0b",
+      "mintHash": "0x381ce43e0b532b3ca0f011d6199a300bd30b7b2d790405cc7e9e09af1d10ee38"
+    },
+    "testnetInfo": {
+      "moonbeamFaucet": "https://faucet.moonbeam.network/",
+      "astarFaucet": "https://portal.astar.network/astar/assets"
+    }
+  },
+  {
+    "bridgeTransactionId": 10,
+    "direction": "Moonbeam -> Astar",
+    "timestamp": "2025-06-07T18:09:45.562Z",
+    "transferAmount": "1.0",
+    "success": true,
+    "totalCosts": {
+      "devSpent": "0.00000418",
+      "sbySpent": "0.13114638",
+      "devSpentReal": "0.00000418",
+      "sbySpentReal": "0.13114638",
+      "moonbeamTotal": "0.00000418",
+      "astarTotal": "0.13114638",
+      "totalGasUsed": {
+        "total": 255136
+      }
+    },
+    "bridgeHashes": {
+      "lockHash": "0x850dc4b7337545b09bb81226114f3fc7339412353f76bdf3fe0d0341e21345dd",
+      "mintHash": "0xead9975d1f2a224e1b06de20b67ed6ebaeacc77a537cc4fde1cf29a0a00389fc"
+    },
+    "testnetInfo": {
+      "moonbeamFaucet": "https://faucet.moonbeam.network/",
+      "astarFaucet": "https://portal.astar.network/astar/assets"
+    }
+  },
+  {
+    "bridgeTransactionId": 12,
+    "direction": "Moonbeam -> Astar",
+    "timestamp": "2025-06-07T18:15:48.570Z",
+    "transferAmount": "1.0",
+    "success": true,
+    "totalCosts": {
+      "devSpent": "0.00000418",
+      "sbySpent": "0.13114638",
+      "devSpentReal": "0.00000418",
+      "sbySpentReal": "0.13114638",
+      "moonbeamTotal": "0.00000418",
+      "astarTotal": "0.13114638",
+      "totalGasUsed": {
+        "total": 255136
+      }
+    },
+    "bridgeHashes": {
+      "lockHash": "0xd89c43aba5d4ee87083cd8cab3a1959e8e1ccbf1e28ef38a814bfe29a452bbb5",
+      "mintHash": "0xb03bf11dd67f08e08d81cb55622ae374ca194e8701bb1f9a6044543d82baafe8"
+    },
+    "testnetInfo": {
+      "moonbeamFaucet": "https://faucet.moonbeam.network/",
+      "astarFaucet": "https://portal.astar.network/astar/assets"
+    }
+  },
+  {
+    "bridgeTransactionId": 13,
+    "direction": "Moonbeam -> Astar",
+    "timestamp": "2025-06-07T18:18:05.778Z",
+    "transferAmount": "1.0",
+    "success": true,
+    "totalCosts": {
+      "devSpent": "0.00000418",
+      "sbySpent": "0.13114638",
+      "devSpentReal": "0.00000418",
+      "sbySpentReal": "0.13114638",
+      "moonbeamTotal": "0.00000418",
+      "astarTotal": "0.13114638",
+      "totalGasUsed": {
+        "total": 255136
+      }
+    },
+    "bridgeHashes": {
+      "lockHash": "0x509e38d8b7343369daa7104aaf5a4c03fbd590c9000c323faeedc4346d2ca53e",
+      "mintHash": "0xb3657e276d6b1818f6e5dd9335b9654d6ac784e4372d1f03a8b138452f64ad79"
+    },
+    "testnetInfo": {
+      "moonbeamFaucet": "https://faucet.moonbeam.network/",
+      "astarFaucet": "https://portal.astar.network/astar/assets"
+    }
+  },
+  {
+    "bridgeTransactionId": 14,
+    "direction": "Astar -> Moonbeam",
+    "timestamp": "2025-06-07T18:19:49.920Z",
+    "transferAmount": "1.0",
+    "success": true,
+    "totalCosts": {
+      "devSpent": "0.00008700",
+      "sbySpent": "0.13006000",
+      "devSpentReal": "0.00008700",
+      "sbySpentReal": "0.13006000",
+      "moonbeamTotal": "0.00008700",
+      "astarTotal": "0.13006000",
+      "totalGasUsed": {
+        "total": 254720
+      }
+    },
+    "bridgeHashes": {
+      "burnHash": "0x78f35ebbd96bb089f9f917ee7e79be51d5f002089259a54e5454bed1200f1285",
+      "unlockHash": "0x2de9de74c3cb8040d507bd9d907901874c93dc9be2193e77b6671ae392190848"
+    },
+    "testnetInfo": {
+      "moonbeamFaucet": "https://faucet.moonbeam.network/",
+      "astarFaucet": "https://portal.astar.network/astar/assets"
+    }
+  },
+  {
+    "bridgeTransactionId": 15,
+    "direction": "Moonbeam -> Astar",
+    "timestamp": "2025-06-07T18:20:43.884Z",
+    "transferAmount": "1.0",
+    "success": true,
+    "totalCosts": {
+      "devSpent": "0.00000418",
+      "sbySpent": "0.13114638",
+      "devSpentReal": "0.00000418",
+      "sbySpentReal": "0.13114638",
+      "moonbeamTotal": "0.00000418",
+      "astarTotal": "0.13114638",
+      "totalGasUsed": {
+        "total": 255136
+      }
+    },
+    "bridgeHashes": {
+      "lockHash": "0xffdd380ac42826702e468d1f7eabc197a397d1cf36ea4f587e881d99c55191d4",
+      "mintHash": "0xea22c1f2f3e4e11714d0dd65e198ea555b2661669b6772e96be5649757ccccaa"
+    },
+    "testnetInfo": {
+      "moonbeamFaucet": "https://faucet.moonbeam.network/",
+      "astarFaucet": "https://portal.astar.network/astar/assets"
+    }
+  },
+  {
+    "bridgeTransactionId": 16,
+    "direction": "Astar -> Moonbeam",
+    "timestamp": "2025-06-07T18:21:44.094Z",
+    "transferAmount": "1.0",
+    "success": true,
+    "totalCosts": {
+      "devSpent": "0.00008700",
+      "sbySpent": "0.13006000",
+      "devSpentReal": "0.00008700",
+      "sbySpentReal": "0.13006000",
+      "moonbeamTotal": "0.00008700",
+      "astarTotal": "0.13006000",
+      "totalGasUsed": {
+        "total": 254720
+      }
+    },
+    "bridgeHashes": {
+      "burnHash": "0xce1847bb929a17467e561c021a93be6fced5e62ffa614d79f54e2b4ece4602a7",
+      "unlockHash": "0x094e51ed4a9323db03d4bf5b4043fdd3bd20c2c288041dc278162ff7de7dde44"
+    },
+    "testnetInfo": {
+      "moonbeamFaucet": "https://faucet.moonbeam.network/",
+      "astarFaucet": "https://portal.astar.network/astar/assets"
+    }
+  },
+  {
+    "bridgeTransactionId": 17,
+    "direction": "Moonbeam -> Astar",
+    "timestamp": "2025-06-07T18:33:32.244Z",
+    "transferAmount": "1.0",
+    "success": true,
+    "totalCosts": {
+      "devSpent": "0.00000418",
+      "sbySpent": "0.13114638",
+      "devSpentReal": "0.00000418",
+      "sbySpentReal": "0.13114638",
+      "moonbeamTotal": "0.00000418",
+      "astarTotal": "0.13114638",
+      "totalGasUsed": {
+        "total": 255136
+      }
+    },
+    "bridgeHashes": {
+      "lockHash": "0x68cec6ef679bf2f36613389bd342cd4c6a5065ef8266d522efacc6cf80e0fc27",
+      "mintHash": "0xe22001f7b62f089c2e4627c3e4cee2f33cf14a0bec8b44b1b3821f2bba24be07"
+    },
+    "testnetInfo": {
+      "moonbeamFaucet": "https://faucet.moonbeam.network/",
+      "astarFaucet": "https://portal.astar.network/astar/assets"
+    }
+  },
+  {
+    "bridgeTransactionId": 18,
+    "direction": "Astar -> Moonbeam",
+    "timestamp": "2025-06-07T19:43:34.108Z",
+    "transferAmount": "1.0",
+    "success": true,
+    "totalCosts": {
+      "devSpent": "0.00008700",
+      "sbySpent": "0.13006000",
+      "devSpentReal": "0.00008700",
+      "sbySpentReal": "0.13006000",
+      "moonbeamTotal": "0.00008700",
+      "astarTotal": "0.13006000",
+      "totalGasUsed": {
+        "total": 254720
+      }
+    },
+    "bridgeHashes": {
+      "burnHash": "0x6f502469e87528ffc74ddfe6331cc28b1f9e82af9f6a5069eea20ccf1b1e94c4",
+      "unlockHash": "0xec83759815e4fe69c8b343f59cda8fa7fb642e5c8d2c5c3902453beac620f8d4"
+    },
+    "testnetInfo": {
+      "moonbeamFaucet": "https://faucet.moonbeam.network/",
+      "astarFaucet": "https://portal.astar.network/astar/assets"
+    }
+  },
+  {
+    "bridgeTransactionId": 19,
+    "direction": "Moonbeam -> Astar",
+    "timestamp": "2025-06-07T20:13:20.975Z",
+    "transferAmount": "1.0",
+    "success": true,
+    "totalCosts": {
+      "devSpent": "0.00000418",
+      "sbySpent": "0.13114638",
+      "devSpentReal": "0.00000418",
+      "sbySpentReal": "0.13114638",
+      "moonbeamTotal": "0.00000418",
+      "astarTotal": "0.13114638",
+      "totalGasUsed": {
+        "total": 255136
+      }
+    },
+    "bridgeHashes": {
+      "lockHash": "0x4e6cefed55131d12ba19cf073e003ad8a09b901fe8bb08ac7ea714bedfd5033b",
+      "mintHash": "0x519c213f600b0a5d8c8e45790fa28f7fb4446bd3170c33e074212251a2a2caae"
+    },
+    "testnetInfo": {
+      "moonbeamFaucet": "https://faucet.moonbeam.network/",
+      "astarFaucet": "https://portal.astar.network/astar/assets"
+    }
+  },
+  {
+    "bridgeTransactionId": 21,
+    "direction": "Moonbeam -> Astar",
+    "timestamp": "2025-06-07T21:46:14.288Z",
+    "transferAmount": "1.0",
+    "success": true,
+    "totalCosts": {
+      "devSpent": "0.00000418",
+      "sbySpent": "0.13114638",
+      "devSpentReal": "0.00000418",
+      "sbySpentReal": "0.13114638",
+      "moonbeamTotal": "0.00000418",
+      "astarTotal": "0.13114638",
+      "totalGasUsed": {
+        "total": 255136
+      }
+    },
+    "bridgeHashes": {
+      "lockHash": "0x6e08d14f64222a697ad5a1c2bd99e67fe02bcd40772bfa5bf0e64913837f747d",
+      "mintHash": "0xf92e3e88ac10cb6c9b6a88ef7e5fc063368b139c83a82f2a58fe1cc54acb0fc3"
+    },
+    "testnetInfo": {
+      "moonbeamFaucet": "https://faucet.moonbeam.network/",
+      "astarFaucet": "https://portal.astar.network/astar/assets"
+    }
+  },
+  {
+    "bridgeTransactionId": 23,
+    "direction": "Moonbeam -> Astar",
+    "timestamp": "2025-06-08T00:09:22.105Z",
+    "transferAmount": "1.0",
+    "success": true,
+    "totalCosts": {
+      "devSpent": "0.00000418",
+      "sbySpent": "0.13114638",
+      "devSpentReal": "0.00000418",
+      "sbySpentReal": "0.13114638",
+      "moonbeamTotal": "0.00000418",
+      "astarTotal": "0.13114638",
+      "totalGasUsed": {
+        "total": 255136
+      }
+    },
+    "bridgeHashes": {
+      "lockHash": "0x2718847a6e713e417e7758291c46778c7868b7816179f9713a8d0f978d3870df",
+      "mintHash": "0xe8d3b1e75cc2e17faff596b6f09f5e9b645a17509c467cde814a56875367d6ce"
+    },
+    "testnetInfo": {
+      "moonbeamFaucet": "https://faucet.moonbeam.network/",
+      "astarFaucet": "https://portal.astar.network/astar/assets"
+    }
+  },
+  {
+    "direction": "Moonbeam -> Astar",
+    "timestamp": "2025-06-14T19:27:16.425Z",
+    "transferAmount": "1.0",
+    "testnetInfo": {
+      "moonbeamFaucet": "https://faucet.moonbeam.network/",
+      "astarFaucet": "https://portal.astar.network/astar/assets"
+    },
+    "initialNetworkInfo": {
+      "moonbeam": {
+        "network": "Moonbeam",
+        "chainId": "1287",
+        "error": "provider.getGasPrice is not a function"
+      },
+      "astar": {
+        "network": "Astar",
+        "chainId": "81",
+        "error": "provider.getGasPrice is not a function"
+      }
+    },
+    "initialNativeBalances": {
+      "moonbeam": {
+        "raw": "10968894561743579498",
+        "formatted": "10.968894561743579498",
+        "currency": "DEV",
+        "wei": "10968894561743579498"
+      },
+      "astar": {
+        "raw": "300861091514898450337",
+        "formatted": "300.861091514898450337",
+        "currency": "SBY",
+        "wei": "300861091514898450337"
+      }
+    },
+    "gasEstimates": {
+      "approve": "47218",
+      "lock": "~87000",
+      "mint": "~168000"
+    },
+    "approveTransaction": {
+      "network": "Moonbeam",
+      "txHash": "0xe125bd0c4bc5bcfc1cdb3b53e21ced2dd9aaa595a5d604f1233abd58b0f5f950",
+      "status": "SUCCESS",
+      "blockNumber": 12502950,
+      "blockHash": "0x1e3cee6bfd9e736407468f9dd27d1302e06fc5003c70edd1125f900e24b8036a",
+      "from": "0xE88a9aC732B1A67fbB407b8C73EB7862439cA604",
+      "to": "0x66f77aEaAa01f4AB4B34fA229D550Bf7E10Dd2A5",
+      "value": "0",
+      "gasLimit": "47218",
+      "gasUsed": "46952",
+      "gasPrice": "31250000",
+      "gasPriceGwei": "0.03125",
+      "effectiveGasPrice": "31250000",
+      "effectiveGasPriceGwei": "0.03125",
+      "totalCost": "1467250000000",
+      "totalCostFormatted": "0.00000146725",
+      "totalEffectiveCost": "1467250000000",
+      "totalEffectiveCostFormatted": "0.00000146725",
+      "gasEfficiency": "99.44",
+      "currency": "DEV",
+      "explorerUrl": "https://moonbase.moonscan.io/tx/0xe125bd0c4bc5bcfc1cdb3b53e21ced2dd9aaa595a5d604f1233abd58b0f5f950",
+      "cumulativeGasUsed": "46952",
+      "logsBloom": "0x00000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000002000000000000000000000000000000000040000000040000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000200000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000800000000000000000010000000000000000000000000000000000000000000008000000000000000",
+      "logs": 1
+    },
+    "lockTransaction": {
+      "network": "Moonbeam",
+      "txHash": "0x81b58dae21216d89fb99f1df73eebdcbe0a30c1c9b8a999b1bb811bdae546377",
+      "status": "SUCCESS",
+      "blockNumber": 12502953,
+      "blockHash": "0xe75e24b70d52dd789177314f98a2323e9538aa1a886925b84c7938d354872fdc",
+      "from": "0xE88a9aC732B1A67fbB407b8C73EB7862439cA604",
+      "to": "0xAeBF38ea2Ac91FD912DD88b839b1E7E175063249",
+      "value": "0",
+      "gasLimit": "88385",
+      "gasUsed": "86864",
+      "gasPrice": "31250000",
+      "gasPriceGwei": "0.03125",
+      "effectiveGasPrice": "31250000",
+      "effectiveGasPriceGwei": "0.03125",
+      "totalCost": "2714500000000",
+      "totalCostFormatted": "0.0000027145",
+      "totalEffectiveCost": "2714500000000",
+      "totalEffectiveCostFormatted": "0.0000027145",
+      "gasEfficiency": "98.28",
+      "currency": "DEV",
+      "explorerUrl": "https://moonbase.moonscan.io/tx/0x81b58dae21216d89fb99f1df73eebdcbe0a30c1c9b8a999b1bb811bdae546377",
+      "cumulativeGasUsed": "86864",
+      "logsBloom": "0x00000000000000001000000000000000000000000000000000000000000000000000008000000000000000020000000000000000000000000000000000000000000000000000002000000008000000000000000000000000040000000040000000000000000000000000000000000000000000000000000000000010000000000000200000000000000000000000000000200000000000000000000000000000040c00000000000000000000000000200000000000010000000000000000000040000002000000000000000000000000000000000000001800000000000000000000000100000000000000000000000000000000000000008000000000000000",
+      "logs": 2
+    },
+    "mintTransaction": {
+      "network": "Astar",
+      "txHash": "0x4c16bdbf19084e0174ae9a80921bee42f639b8b190fb2545ccb24217da6bfdff",
+      "status": "SUCCESS",
+      "blockNumber": 10717843,
+      "blockHash": "0xe2936ed4380553301efa26e7cf05e5731479be0d52db8fd5e0e74ba3c09fedcb",
+      "from": "0xE88a9aC732B1A67fbB407b8C73EB7862439cA604",
+      "to": "0x0c33d1599cbeAa6D42D43eEb5986f7917c7c467e",
+      "value": "0",
+      "gasLimit": "300000",
+      "gasUsed": "168272",
+      "gasPrice": "779371350051",
+      "gasPriceGwei": "779.371350051",
+      "effectiveGasPrice": "779371350051",
+      "effectiveGasPriceGwei": "779.371350051",
+      "totalCost": "131146375815781872",
+      "totalCostFormatted": "0.131146375815781872",
+      "totalEffectiveCost": "131146375815781872",
+      "totalEffectiveCostFormatted": "0.131146375815781872",
+      "gasEfficiency": "56.09",
+      "currency": "SBY",
+      "explorerUrl": "https://shibuya.subscan.io/tx/0x4c16bdbf19084e0174ae9a80921bee42f639b8b190fb2545ccb24217da6bfdff",
+      "cumulativeGasUsed": "168272",
+      "logsBloom": "0x00000000000800000000000000000000000000000010100000000000000000000800000000002000000000000000000000000000000000001000000000000000000000000000000000000008000000000000000000000000000000000040000000000000000000000000000000000000020000000000000000000010000000000000200000000000200400000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000200000000000000000000000000000000000000001000000100000000000000000000400000000000000000000000010008000000000000000",
+      "logs": 2
+    },
+    "finalNativeBalances": {
+      "moonbeam": {
+        "raw": "10968890379993579498",
+        "formatted": "10.968890379993579498",
+        "currency": "DEV",
+        "wei": "10968890379993579498"
+      },
+      "astar": {
+        "raw": "300729945139082668465",
+        "formatted": "300.729945139082668465",
+        "currency": "SBY",
+        "wei": "300729945139082668465"
+      }
+    },
+    "totalCosts": {
+      "moonbeamTotal": "0.00000418",
+      "astarTotal": "0.13114638",
+      "devSpent": "0.00000418",
+      "sbySpent": "0.13114638",
+      "devSpentReal": "0.00000418",
+      "sbySpentReal": "0.13114638",
+      "totalGasUsed": {
+        "approve": "46952",
+        "lock": "86864",
+        "mint": "168272"
+      }
+    },
+    "success": true
+  }
+]

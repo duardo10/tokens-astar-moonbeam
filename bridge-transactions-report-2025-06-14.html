@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório de Transações Bridge Cross-Chain</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #2c3e50; text-align: center; }
+        .summary { background: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+        table { border-collapse: collapse; width: 100%; font-size: 12px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #3498db; color: white; font-weight: bold; }
+        .success { background-color: #d4edda; }
+        .failed { background-color: #f8d7da; }
+        .cost { text-align: right; font-family: monospace; }
+        .hash { font-family: monospace; font-size: 10px; max-width: 120px; overflow: hidden; text-overflow: ellipsis; }
+        .center { text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>🌉 Relatório de Transações Bridge Cross-Chain</h1>
+    <h2>Moonbeam ↔ Astar</h2>
+    
+    <div class="summary">
+        <h3>📊 Resumo Executivo</h3>
+        <p><strong>Total de Transações:</strong> 23</p>
+        <p><strong>Sucessos:</strong> 16 (69.6%)</p>
+        <p><strong>Falhas:</strong> 7 (30.4%)</p>
+        <p><strong>Volume Total:</strong> 16.00 tokens</p>
+        <p><strong>Custo Total Estimado:</strong> ~$0.0001 USD</p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Data/Hora</th>
+                <th>Direção</th>
+                <th>Valor</th>
+                <th>Status</th>
+                <th>Hash Lock/Burn</th>
+                <th>Hash Mint/Unlock</th>
+                <th>Gas Lock/Burn</th>
+                <th>Gas Mint/Unlock</th>
+                <th>Custo DEV</th>
+                <th>Custo SBY</th>
+                <th>Custo USD</th>
+                <th>Gas Total</th>
+                <th>Eficiência</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr class="success">
+                    <td class="center">1</td>
+                    <td>07/06/2025, 13:54:50</td>
+                    <td><strong>Moonbeam → Astar</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">SUCCESS</td>
+                    <td class="hash">0xfe28978f9b82be569f...</td>
+                    <td class="hash">0x0642dd53fc6b59766f...</td>
+                    <td class="cost">86864</td>
+                    <td class="cost">168272</td>
+                    <td class="cost">0.00000418</td>
+                    <td class="cost">0.13114000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">302.000</td>
+                    <td class="cost">~95%</td>
+                </tr>
+                <tr class="success">
+                    <td class="center">2</td>
+                    <td>07/06/2025, 14:19:27</td>
+                    <td><strong>Moonbeam → Astar</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">SUCCESS</td>
+                    <td class="hash">0xb0c978e6c6b10b5eaf...</td>
+                    <td class="hash">0x578df9720c9fa19822...</td>
+                    <td class="cost">86864</td>
+                    <td class="cost">168272</td>
+                    <td class="cost">0.00000418</td>
+                    <td class="cost">0.13114000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">302.000</td>
+                    <td class="cost">~95%</td>
+                </tr>
+                <tr class="failed">
+                    <td class="center">3</td>
+                    <td>07/06/2025, 14:49:45</td>
+                    <td><strong>Astar → Moonbeam</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">FAILED</td>
+                    <td class="hash">N/A...</td>
+                    <td class="hash">N/A...</td>
+                    <td class="cost">N/A</td>
+                    <td class="cost">N/A</td>
+                    <td class="cost">0.00008700</td>
+                    <td class="cost">0.13006000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">254.000</td>
+                    <td class="cost">N/A</td>
+                </tr>
+                <tr class="success">
+                    <td class="center">4</td>
+                    <td>07/06/2025, 14:53:07</td>
+                    <td><strong>Moonbeam → Astar</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">SUCCESS</td>
+                    <td class="hash">0x03fb85f5744688e860...</td>
+                    <td class="hash">0x7d065f22cd05907d59...</td>
+                    <td class="cost">86864</td>
+                    <td class="cost">168272</td>
+                    <td class="cost">0.00000418</td>
+                    <td class="cost">0.13114000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">302.000</td>
+                    <td class="cost">~95%</td>
+                </tr>
+                <tr class="success">
+                    <td class="center">5</td>
+                    <td>07/06/2025, 14:56:51</td>
+                    <td><strong>Moonbeam → Astar</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">SUCCESS</td>
+                    <td class="hash">0x2b990f464dd2d0612d...</td>
+                    <td class="hash">0xcdda5e0384a99de109...</td>
+                    <td class="cost">86864</td>
+                    <td class="cost">168272</td>
+                    <td class="cost">0.00000418</td>
+                    <td class="cost">0.13114000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">302.000</td>
+                    <td class="cost">~95%</td>
+                </tr>
+                <tr class="failed">
+                    <td class="center">6</td>
+                    <td>07/06/2025, 14:58:08</td>
+                    <td><strong>Astar → Moonbeam</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">FAILED</td>
+                    <td class="hash">N/A...</td>
+                    <td class="hash">N/A...</td>
+                    <td class="cost">N/A</td>
+                    <td class="cost">N/A</td>
+                    <td class="cost">0.00008700</td>
+                    <td class="cost">0.13006000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">254.000</td>
+                    <td class="cost">N/A</td>
+                </tr>
+                <tr class="failed">
+                    <td class="center">7</td>
+                    <td>07/06/2025, 15:02:07</td>
+                    <td><strong>Moonbeam → Astar</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">FAILED</td>
+                    <td class="hash">N/A...</td>
+                    <td class="hash">N/A...</td>
+                    <td class="cost">N/A</td>
+                    <td class="cost">N/A</td>
+                    <td class="cost">0.00000418</td>
+                    <td class="cost">0.13114000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">302.000</td>
+                    <td class="cost">N/A</td>
+                </tr>
+                <tr class="success">
+                    <td class="center">8</td>
+                    <td>07/06/2025, 15:07:07</td>
+                    <td><strong>Moonbeam → Astar</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">SUCCESS</td>
+                    <td class="hash">0x9035df390dbeab5c0e...</td>
+                    <td class="hash">0x381ce43e0b532b3ca0...</td>
+                    <td class="cost">86864</td>
+                    <td class="cost">168272</td>
+                    <td class="cost">0.00000418</td>
+                    <td class="cost">0.13114000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">302.000</td>
+                    <td class="cost">~95%</td>
+                </tr>
+                <tr class="failed">
+                    <td class="center">9</td>
+                    <td>07/06/2025, 15:08:21</td>
+                    <td><strong>Astar → Moonbeam</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">FAILED</td>
+                    <td class="hash">N/A...</td>
+                    <td class="hash">N/A...</td>
+                    <td class="cost">N/A</td>
+                    <td class="cost">N/A</td>
+                    <td class="cost">0.00008700</td>
+                    <td class="cost">0.13006000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">254.000</td>
+                    <td class="cost">N/A</td>
+                </tr>
+                <tr class="success">
+                    <td class="center">10</td>
+                    <td>07/06/2025, 15:09:45</td>
+                    <td><strong>Moonbeam → Astar</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">SUCCESS</td>
+                    <td class="hash">0x850dc4b7337545b09b...</td>
+                    <td class="hash">0xead9975d1f2a224e1b...</td>
+                    <td class="cost">86864</td>
+                    <td class="cost">168272</td>
+                    <td class="cost">0.00000418</td>
+                    <td class="cost">0.13114000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">302.000</td>
+                    <td class="cost">~95%</td>
+                </tr>
+                <tr class="failed">
+                    <td class="center">11</td>
+                    <td>07/06/2025, 15:10:21</td>
+                    <td><strong>Astar → Moonbeam</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">FAILED</td>
+                    <td class="hash">N/A...</td>
+                    <td class="hash">N/A...</td>
+                    <td class="cost">N/A</td>
+                    <td class="cost">N/A</td>
+                    <td class="cost">0.00008700</td>
+                    <td class="cost">0.13006000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">254.000</td>
+                    <td class="cost">N/A</td>
+                </tr>
+                <tr class="success">
+                    <td class="center">12</td>
+                    <td>07/06/2025, 15:15:48</td>
+                    <td><strong>Moonbeam → Astar</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">SUCCESS</td>
+                    <td class="hash">0xd89c43aba5d4ee8708...</td>
+                    <td class="hash">0xb03bf11dd67f08e08d...</td>
+                    <td class="cost">86864</td>
+                    <td class="cost">168272</td>
+                    <td class="cost">0.00000418</td>
+                    <td class="cost">0.13114000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">302.000</td>
+                    <td class="cost">~95%</td>
+                </tr>
+                <tr class="success">
+                    <td class="center">13</td>
+                    <td>07/06/2025, 15:18:05</td>
+                    <td><strong>Moonbeam → Astar</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">SUCCESS</td>
+                    <td class="hash">0x509e38d8b7343369da...</td>
+                    <td class="hash">0xb3657e276d6b1818f6...</td>
+                    <td class="cost">86864</td>
+                    <td class="cost">168272</td>
+                    <td class="cost">0.00000418</td>
+                    <td class="cost">0.13114000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">302.000</td>
+                    <td class="cost">~95%</td>
+                </tr>
+                <tr class="success">
+                    <td class="center">14</td>
+                    <td>07/06/2025, 15:19:49</td>
+                    <td><strong>Astar → Moonbeam</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">SUCCESS</td>
+                    <td class="hash">0x78f35ebbd96bb089f9...</td>
+                    <td class="hash">0x2de9de74c3cb8040d5...</td>
+                    <td class="cost">167440</td>
+                    <td class="cost">87280</td>
+                    <td class="cost">0.00008700</td>
+                    <td class="cost">0.13006000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">254.000</td>
+                    <td class="cost">N/A</td>
+                </tr>
+                <tr class="success">
+                    <td class="center">15</td>
+                    <td>07/06/2025, 15:20:43</td>
+                    <td><strong>Moonbeam → Astar</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">SUCCESS</td>
+                    <td class="hash">0xffdd380ac42826702e...</td>
+                    <td class="hash">0xea22c1f2f3e4e11714...</td>
+                    <td class="cost">86864</td>
+                    <td class="cost">168272</td>
+                    <td class="cost">0.00000418</td>
+                    <td class="cost">0.13114000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">302.000</td>
+                    <td class="cost">~95%</td>
+                </tr>
+                <tr class="success">
+                    <td class="center">16</td>
+                    <td>07/06/2025, 15:21:44</td>
+                    <td><strong>Astar → Moonbeam</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">SUCCESS</td>
+                    <td class="hash">0xce1847bb929a17467e...</td>
+                    <td class="hash">0x094e51ed4a9323db03...</td>
+                    <td class="cost">167440</td>
+                    <td class="cost">87280</td>
+                    <td class="cost">0.00008700</td>
+                    <td class="cost">0.13006000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">254.000</td>
+                    <td class="cost">N/A</td>
+                </tr>
+                <tr class="success">
+                    <td class="center">17</td>
+                    <td>07/06/2025, 15:33:32</td>
+                    <td><strong>Moonbeam → Astar</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">SUCCESS</td>
+                    <td class="hash">0x68cec6ef679bf2f366...</td>
+                    <td class="hash">0xe22001f7b62f089c2e...</td>
+                    <td class="cost">86864</td>
+                    <td class="cost">168272</td>
+                    <td class="cost">0.00000418</td>
+                    <td class="cost">0.13114000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">302.000</td>
+                    <td class="cost">~95%</td>
+                </tr>
+                <tr class="success">
+                    <td class="center">18</td>
+                    <td>07/06/2025, 16:43:34</td>
+                    <td><strong>Astar → Moonbeam</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">SUCCESS</td>
+                    <td class="hash">0x6f502469e87528ffc7...</td>
+                    <td class="hash">0xec83759815e4fe69c8...</td>
+                    <td class="cost">167440</td>
+                    <td class="cost">87280</td>
+                    <td class="cost">0.00008700</td>
+                    <td class="cost">0.13006000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">254.000</td>
+                    <td class="cost">N/A</td>
+                </tr>
+                <tr class="success">
+                    <td class="center">19</td>
+                    <td>07/06/2025, 17:13:20</td>
+                    <td><strong>Moonbeam → Astar</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">SUCCESS</td>
+                    <td class="hash">0x4e6cefed55131d12ba...</td>
+                    <td class="hash">0x519c213f600b0a5d8c...</td>
+                    <td class="cost">86864</td>
+                    <td class="cost">168272</td>
+                    <td class="cost">0.00000418</td>
+                    <td class="cost">0.13114000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">302.000</td>
+                    <td class="cost">~95%</td>
+                </tr>
+                <tr class="failed">
+                    <td class="center">20</td>
+                    <td>07/06/2025, 18:15:34</td>
+                    <td><strong>Astar → Moonbeam</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">FAILED</td>
+                    <td class="hash">N/A...</td>
+                    <td class="hash">N/A...</td>
+                    <td class="cost">N/A</td>
+                    <td class="cost">N/A</td>
+                    <td class="cost">0.00008700</td>
+                    <td class="cost">0.13006000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">254.000</td>
+                    <td class="cost">N/A</td>
+                </tr>
+                <tr class="success">
+                    <td class="center">21</td>
+                    <td>07/06/2025, 18:46:14</td>
+                    <td><strong>Moonbeam → Astar</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">SUCCESS</td>
+                    <td class="hash">0x6e08d14f64222a697a...</td>
+                    <td class="hash">0xf92e3e88ac10cb6c9b...</td>
+                    <td class="cost">86864</td>
+                    <td class="cost">168272</td>
+                    <td class="cost">0.00000418</td>
+                    <td class="cost">0.13114000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">302.000</td>
+                    <td class="cost">~95%</td>
+                </tr>
+                <tr class="failed">
+                    <td class="center">22</td>
+                    <td>07/06/2025, 21:08:38</td>
+                    <td><strong>Astar → Moonbeam</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">FAILED</td>
+                    <td class="hash">N/A...</td>
+                    <td class="hash">N/A...</td>
+                    <td class="cost">N/A</td>
+                    <td class="cost">N/A</td>
+                    <td class="cost">0.00008700</td>
+                    <td class="cost">0.13006000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">254.000</td>
+                    <td class="cost">N/A</td>
+                </tr>
+                <tr class="success">
+                    <td class="center">23</td>
+                    <td>07/06/2025, 21:09:22</td>
+                    <td><strong>Moonbeam → Astar</strong></td>
+                    <td class="cost">1.0</td>
+                    <td class="center">SUCCESS</td>
+                    <td class="hash">0x2718847a6e713e417e...</td>
+                    <td class="hash">0xe8d3b1e75cc2e17faf...</td>
+                    <td class="cost">86864</td>
+                    <td class="cost">168272</td>
+                    <td class="cost">0.00000418</td>
+                    <td class="cost">0.13114000</td>
+                    <td class="cost">$0.000007</td>
+                    <td class="cost">302.000</td>
+                    <td class="cost">~95%</td>
+                </tr>
+        </tbody>
+    </table>
+
+    <div class="summary" style="margin-top: 20px;">
+        <h3>🔗 Links dos Exploradores</h3>
+        <p><strong>Moonbeam:</strong> <a href="https://moonbase.moonscan.io/">https://moonbase.moonscan.io/</a></p>
+        <p><strong>Astar/Shibuya:</strong> <a href="https://shibuya.subscan.io/">https://shibuya.subscan.io/</a></p>
+        
+        <h3>💰 Faucets</h3>
+        <p><strong>Moonbeam DEV:</strong> <a href="https://faucet.moonbeam.network/">https://faucet.moonbeam.network/</a></p>
+        <p><strong>Astar SBY:</strong> <a href="https://portal.astar.network/astar/assets">https://portal.astar.network/astar/assets</a></p>
+        
+        <h3>📋 Observações</h3>
+        <ul>
+            <li>Custos calculados com base em dados reais das testnets</li>
+            <li>Preços USD são estimativas baseadas em valores de mercado</li>
+            <li>Gas usado pode variar conforme condições da rede</li>
+            <li>Eficiência calculada como gas usado vs gas limite</li>
+        </ul>
+    </div>
+</body>
+</html>
