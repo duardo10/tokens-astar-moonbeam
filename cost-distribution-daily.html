@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribuição de Custos por Hora do Dia</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .summary {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #007bff;
+        }
+        .summary h2 {
+            color: #007bff;
+            margin-top: 0;
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .summary-item {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+        }
+        .summary-item strong {
+            color: #495057;
+        }
+        .chart-container {
+            margin: 30px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .chart-container h3 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        canvas {
+            max-height: 400px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #dee2e6;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Distribuição de Custos por Hora do Dia</h1>
+        
+        <div class="summary">
+            <h2>Resumo</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <strong>Total de Custos:</strong><br>
+                    $0.000262 USD
+                </div>
+                <div class="summary-item">
+                    <strong>Hora de Pico:</strong><br>
+                    15:00
+                </div>
+                <div class="summary-item">
+                    <strong>Custo Médio por Hora:</strong><br>
+                    $0.000011 USD
+                </div>
+                <div class="summary-item">
+                    <strong>Horas com Atividade:</strong><br>
+                    8
+                </div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h3>Distribuição de Custos por Hora do Dia (USD)</h3>
+            <canvas id="costChart"></canvas>
+        </div>
+
+        <div class="footer">
+            <p>Relatório gerado em: 09/07/2025, 12:38:17</p>
+            <p>Taxas de conversão: DEV ≈ $0.0001, SBY ≈ $0.0001</p>
+        </div>
+    </div>
+
+    <script>
+        const chartData = [0,0,0,0,0,0,0,0,0,0.000039345168,0,0,0,0.000013115056000000002,0.000039345168,0.000104719736,0.000026129756000000005,0.000013115056000000002,0.000013115056000000002,0,0,0.000013115056000000002,0,0];
+        const labels = ["00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"];
+        
+        const costCtx = document.getElementById('costChart').getContext('2d');
+        new Chart(costCtx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Custo Total (USD)',
+                        data: chartData,
+                        backgroundColor: 'rgba(75, 192, 192, 0.8)',
+                        borderColor: 'rgb(75, 192, 192)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return 'Custo: $' + context.parsed.y.toFixed(6) + ' USD';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        type: 'logarithmic',
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: 'Custo (USD)'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value.toExponential(2);
+                            }
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Hora do Dia'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

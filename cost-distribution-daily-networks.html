@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Custos por Rede e Hora</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .chart-container {
+            margin: 30px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .chart-container h3 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        canvas {
+            max-height: 400px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #dee2e6;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Análise de Custos por Rede e Hora</h1>
+        <div class="chart-container">
+            <h3>Custo em Dólares por Hora para Cada Rede</h3>
+            <canvas id="networkCostChart"></canvas>
+        </div>
+        <div class="footer">
+            <p>Relatório gerado em: 09/07/2025, 12:44:19</p>
+            <p>Taxas de conversão: DEV ≈ $0.0001, SBY ≈ $0.0001</p>
+        </div>
+    </div>
+    <script>
+        const devData = [0,0,0,0,0,0,0,0,0,1.254e-9,0,0,0,4.18e-10,1.254e-9,1.9908000000000002e-8,9.118e-9,4.18e-10,4.18e-10,0,0,4.18e-10,0,0];
+        const sbyData = [0,0,0,0,0,0,0,0,0,0.000039343914000000006,0,0,0,0.000013114638000000002,0.000039343914000000006,0.00010469982799999999,0.000026120638000000006,0.000013114638000000002,0.000013114638000000002,0,0,0.000013114638000000002,0,0];
+        const labels = ["00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"];
+        const ctx = document.getElementById('networkCostChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Moonbeam (DEV)',
+                        data: devData,
+                        borderColor: 'rgb(75, 192, 192)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        fill: false,
+                        tension: 0.1
+                    },
+                    {
+                        label: 'Astar (SBY)',
+                        data: sbyData,
+                        borderColor: 'rgb(255, 99, 132)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        fill: false,
+                        tension: 0.1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': $' + context.parsed.y.toFixed(6) + ' USD';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        type: 'logarithmic',
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: 'Custo (USD)'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value.toExponential(2);
+                            }
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Hora do Dia'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
