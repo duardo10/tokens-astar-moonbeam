@@ -38,6 +38,17 @@ function createHTMLReport(hourlyCosts, hourlyCounts) {
     const hours = Array.from({length: 24}, (_, i) => i);
     const labels = hours.map(h => `${h.toString().padStart(2, '0')}:00`);
     
+    // Filtrar apenas horários com transações
+    const activeHours = [];
+    const activeCosts = [];
+    
+    hourlyCosts.forEach((cost, hour) => {
+        if (cost > 0) {
+            activeHours.push(labels[hour]);
+            activeCosts.push(cost);
+        }
+    });
+    
     const html = `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -155,8 +166,8 @@ function createHTMLReport(hourlyCosts, hourlyCounts) {
     </div>
 
     <script>
-        const chartData = ${JSON.stringify(hourlyCosts)};
-        const labels = ${JSON.stringify(labels)};
+        const chartData = ${JSON.stringify(activeCosts)};
+        const labels = ${JSON.stringify(activeHours)};
         
         const costCtx = document.getElementById('costChart').getContext('2d');
         new Chart(costCtx, {
@@ -189,14 +200,15 @@ function createHTMLReport(hourlyCosts, hourlyCounts) {
                 },
                 scales: {
                     y: {
-                        beginAtZero: true,
+                        type: 'logarithmic',
+                        beginAtZero: false,
                         title: {
                             display: true,
                             text: 'Custo (USD)'
                         },
                         ticks: {
                             callback: function(value) {
-                                return '$' + value.toFixed(6);
+                                return '$' + value.toExponential(2);
                             }
                         }
                     },
@@ -218,7 +230,7 @@ function createHTMLReport(hourlyCosts, hourlyCounts) {
 
 async function main() {
     try {
-        const data = await parseCSV('hourly-cost-analysis-2025-07-01.csv');
+        const data = await parseCSV('hourly-cost-analysis-filtered.csv');
         const { hourlyCosts, hourlyCounts } = generateDailyCostDistribution(data);
         
         const html = createHTMLReport(hourlyCosts, hourlyCounts);

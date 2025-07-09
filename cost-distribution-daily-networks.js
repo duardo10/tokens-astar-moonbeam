@@ -29,6 +29,21 @@ function generateNetworkCosts(data) {
 function createHTMLReport(devCosts, sbyCosts) {
     const hours = Array.from({length: 24}, (_, i) => i);
     const labels = hours.map(h => `${h.toString().padStart(2, '0')}:00`);
+    
+    // Filtrar apenas horários com transações
+    const activeHours = [];
+    const activeDevCosts = [];
+    const activeSbyCosts = [];
+    
+    devCosts.forEach((devCost, hour) => {
+        const sbyCost = sbyCosts[hour];
+        if (devCost > 0 || sbyCost > 0) {
+            activeHours.push(labels[hour]);
+            activeDevCosts.push(devCost);
+            activeSbyCosts.push(sbyCost);
+        }
+    });
+    
     const html = `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -95,9 +110,9 @@ function createHTMLReport(devCosts, sbyCosts) {
         </div>
     </div>
     <script>
-        const devData = ${JSON.stringify(devCosts)};
-        const sbyData = ${JSON.stringify(sbyCosts)};
-        const labels = ${JSON.stringify(labels)};
+        const devData = ${JSON.stringify(activeDevCosts)};
+        const sbyData = ${JSON.stringify(activeSbyCosts)};
+        const labels = ${JSON.stringify(activeHours)};
         const ctx = document.getElementById('networkCostChart').getContext('2d');
         new Chart(ctx, {
             type: 'line',
@@ -138,14 +153,15 @@ function createHTMLReport(devCosts, sbyCosts) {
                 },
                 scales: {
                     y: {
-                        beginAtZero: true,
+                        type: 'logarithmic',
+                        beginAtZero: false,
                         title: {
                             display: true,
                             text: 'Custo (USD)'
                         },
                         ticks: {
                             callback: function(value) {
-                                return '$' + value.toFixed(6);
+                                return '$' + value.toExponential(2);
                             }
                         }
                     },
@@ -166,7 +182,7 @@ function createHTMLReport(devCosts, sbyCosts) {
 
 async function main() {
     try {
-        const data = await parseCSV('hourly-cost-analysis-2025-07-01.csv');
+        const data = await parseCSV('hourly-cost-analysis-filtered.csv');
         const { devCosts, sbyCosts } = generateNetworkCosts(data);
         const html = createHTMLReport(devCosts, sbyCosts);
         fs.writeFileSync('cost-distribution-daily-networks.html', html);
